@@ -1,0 +1,23 @@
+const HomePage = () => {
+  return (
+    <section className="hero-section">
+      <div className="hero-left">
+        <div className="hero-section-text">
+          <h1>
+            Furniture design to <br></br> make you feel at home
+          </h1>
+          <p>Create your perfect space with our desingn</p>
+        </div>
+        <div className="hero-buttons">
+          <button className="btn-primary">Explore products</button>
+          <button className="btn-secondary">Learn more ↓</button>
+        </div>
+      </div>
+      <div className="hero-right">
+        <p>SLIKA</p>
+      </div>
+    </section>
+  );
+};
+
+export default HomePage;
