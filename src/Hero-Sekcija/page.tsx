@@ -14,7 +14,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="hero-right">
-        <p>SLIKA</p>
+        <img src="public/x-shopper-images/heroimg.png" alt="furniture" />
       </div>
     </section>
   );

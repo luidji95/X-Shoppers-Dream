@@ -49,8 +49,8 @@
   align-items: center;
   padding: 20px 60px;
   background-color: #f8f8f8;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 .nav-title {
@@ -101,11 +101,10 @@
 .hero-section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 80px 10%;
   background-color: #f8f8f8;
-  padding-left: 10%;
-  padding-right: 10px;
+  padding-left: 15%;
+  padding-right: 15%;
   border-bottom: 1px solid grey;
 }
 
@@ -169,11 +168,10 @@
 .hero-right {
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
 }
 
-/* Ako planiraš sliku unutra, dodaj ovaj CSS */
 .hero-right img {
   width: 100%;
   max-width: 500px;
