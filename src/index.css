@@ -1,4 +1,4 @@
-/* :root {
+:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -25,6 +25,9 @@ a:hover {
 body {
   box-sizing: border-box;
   display: flex;
+  font-family: "Poppins", sans-serif;
+  /* background-color: #e72121; */
+  background-color: whitesmoke;
   font-family: "Poppins", sans-serif;
 }
 
@@ -63,4 +66,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-} */
+}
