@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import fetchThreeProducts from "../Api/productsServices";
 import Product from "../ProductCard/productCard";
+import { useState } from "react";
 
 const FeaturedProduct = () => {
   const {
@@ -20,13 +21,18 @@ const FeaturedProduct = () => {
   return (
     <div className="featured-main">
       <div className="fetured-text">
-        <h2>Featured Products</h2>
-        <p>The art of modern living unlocked.</p>
+        <h2 className="featured-products-h2">Featured Products</h2>
+        <p className="featured-products-p">
+          The art of modern living unlocked.
+        </p>
       </div>
       <div className="product-representation">
         {products.map((product) => (
           <Product product={product} />
         ))}
+      </div>
+      <div className="allproducts-div">
+        <button className="allproducts-button">All products</button>
       </div>
     </div>
   );

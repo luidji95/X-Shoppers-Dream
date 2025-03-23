@@ -12,6 +12,7 @@ const fetchThreeProducts = async (): Promise<Product[]> => {
       image: product.image,
       price: product.price,
       name: product.name,
+      description: product.description,
     }));
   } catch (error) {
     console.log(`Error fethcing products`, error);
