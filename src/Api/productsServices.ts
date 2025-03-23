@@ -1,4 +1,4 @@
-const fetchThreeProducts = async () => {
+const fetchThreeProducts = async (): Promise<Product[]> => {
   try {
     const response = await fetch(
       `https://www.course-api.com/react-store-products`

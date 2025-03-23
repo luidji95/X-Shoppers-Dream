@@ -8,7 +8,7 @@ const FeaturedProduct = () => {
     isLoading,
     isError,
     error,
-  } = useQuery({
+  } = useQuery<Product[]>({
     queryKey: ["products"],
     queryFn: fetchThreeProducts,
     staleTime: 1000 * 60 * 5,
@@ -25,12 +25,7 @@ const FeaturedProduct = () => {
       </div>
       <div className="product-representation">
         {products.map((product) => (
-          <Product
-            key={product.id}
-            image={product.image}
-            name={product.name}
-            price={product.price}
-          />
+          <Product product={product} />
         ))}
       </div>
     </div>

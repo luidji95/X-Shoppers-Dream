@@ -1,4 +1,11 @@
-const Product = ({ image, price, name }) => {
+import type { Product } from "../type/products";
+
+type ProductProps = {
+  product: Product;
+};
+
+const Product = ({ product }: ProductProps) => {
+  const { image, name, price } = product;
   return (
     <div className="product-main-card">
       <img src={image} alt={name} />

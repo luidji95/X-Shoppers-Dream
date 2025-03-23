@@ -21,11 +21,11 @@ const HomePage = () => {
       <section className="adds-section">
         <h4 className="adds-title">as featured in</h4>
         <div className="adds-img">
-          <img src="public/adds/adds1.png" />
-          <img src="public/adds/adds2.png" />
-          <img src="public/adds/adds3.png" />
-          <img src="public/adds/adds4.png" />
-          <img src="public/adds/adds5.png" />
+          <img src="/adds/adds1.png" />
+          <img src="/adds/adds2.png" />
+          <img src="/adds/adds3.png" />
+          <img src="/adds/adds4.png" />
+          <img src="/adds/adds5.png" />
         </div>
       </section>
     </>
