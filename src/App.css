@@ -501,14 +501,38 @@
   font-family: "Poppins", sans-serif;
 }
 .creeds-content {
-  background-color: red;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
+
 .creeds-content-same {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
   gap: 20px;
+  margin-top: 50px;
+}
+.bold {
+  font-weight: bold;
+}
+.creeds-icons-pic {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 1rem; /* ako treba razmak ispod */
+  position: absolute;
+  top: 10px;
+}
+.circle {
+  background-color: rgba(228, 167, 220, 0.562);
+  border-radius: 9999px;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }

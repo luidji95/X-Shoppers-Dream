@@ -8,8 +8,14 @@ const BrandEssence = () => {
         </p>
         <div className="creeds-content">
           <div className="creeds-content-same">
-            <img src="" />
-            <p>Radiance</p>
+            <div className="circle">
+              <img
+                src="public/flaticons/view.png"
+                className="creeds-icons-pic"
+              />
+            </div>
+
+            <p className="bold">Radiance</p>
             <p>
               Our commitment to providing sparkling solutions ensures every
               customer enjoys a shining, glowing experience with unmatched
@@ -17,21 +23,32 @@ const BrandEssence = () => {
             </p>
           </div>
           <div className="creeds-content-same">
-            <img src="" />
-            <p>Radiance</p>
+            <div className="circle">
+              <img
+                src="public/flaticons/view.png"
+                className="creeds-icons-pic"
+              />
+            </div>
+
+            <p className="bold">Clarity</p>
             <p>
-              Our commitment to providing sparkling solutions ensures every
-              customer enjoys a shining, glowing experience with unmatched
-              quality.
+              With clear vision and keen insight, we guide customers down the
+              path to lasting success with exceptional service and anticipation
             </p>
           </div>
           <div className="creeds-content-same">
-            <img src="" />
-            <p>Radiance</p>
+            <div className="circle">
+              <img
+                src="public/flaticons/view.png"
+                className="creeds-icons-pic"
+              />
+            </div>
+
+            <p className="bold">Heritage</p>
             <p>
-              Our commitment to providing sparkling solutions ensures every
-              customer enjoys a shining, glowing experience with unmatched
-              quality.
+              As a trusted partner, we offer expert guidance, drawing on our
+              deep wisdom and wealth of experience to ensure satisfaction and
+              success.
             </p>
           </div>
         </div>
