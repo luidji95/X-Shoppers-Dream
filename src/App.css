@@ -488,6 +488,7 @@
 }
 .creeds-section {
   border-top: 1px solid rgb(223, 210, 210);
+  margin-bottom: 100px;
 }
 .creeds-title {
   margin-top: 100px;
@@ -535,4 +536,38 @@
   justify-content: center;
   align-items: center;
   position: relative;
+}
+.tab-btn {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.tb-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.activetab {
+  background-color: #a855f7;
+  color: white;
+}
+.operations-main {
+  border-top: 1px solid rgb(223, 210, 210);
+}
+.operations-text {
+  margin-top: 100px;
+}
+.operations-text h2 {
+  margin-top: 100px;
+  text-transform: uppercase;
+  color: #a855f7;
+  font-size: 1.1rem;
+}
+.operations-text p {
+  font-size: 1.7rem;
+  font-family: "Poppins", sans-serif;
 }

@@ -9,6 +9,7 @@ import Header from "./Header/Header";
 import HomePage from "./Hero-Section/page";
 import FeaturedProduct from "./FeaturedProducts/featuredProducts";
 import BrandEssence from "./BrandEssence/page";
+import Operations from "./Operations/page";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <HomePage />
       <FeaturedProduct />
       <BrandEssence />
+      <Operations />
     </div>
   );
 }

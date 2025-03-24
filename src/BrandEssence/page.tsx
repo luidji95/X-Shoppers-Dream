@@ -10,7 +10,7 @@ const BrandEssence = () => {
           <div className="creeds-content-same">
             <div className="circle">
               <img
-                src="public/flaticons/view.png"
+                src="public/flaticons/stars.png"
                 className="creeds-icons-pic"
               />
             </div>
@@ -39,7 +39,7 @@ const BrandEssence = () => {
           <div className="creeds-content-same">
             <div className="circle">
               <img
-                src="public/flaticons/view.png"
+                src="public/flaticons/like.png"
                 className="creeds-icons-pic"
               />
             </div>
