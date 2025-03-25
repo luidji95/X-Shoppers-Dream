@@ -557,6 +557,11 @@
 }
 .operations-main {
   border-top: 1px solid rgb(223, 210, 210);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
 }
 .operations-text {
   margin-top: 100px;
@@ -570,4 +575,92 @@
 .operations-text p {
   font-size: 1.7rem;
   font-family: "Poppins", sans-serif;
+}
+.tabButton-div {
+  width: 63%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tabContent-div {
+  margin-bottom: 100px;
+}
+.testimonials-main {
+  border-top: 1px solid rgb(223, 210, 210);
+}
+.testimonials-text {
+  margin-top: 100px;
+}
+.testimonials-text h2 {
+  margin-top: 100px;
+  text-transform: uppercase;
+  color: #a855f7;
+  font-size: 1.1rem;
+}
+.testimonials-text p {
+  font-size: 1.7rem;
+  font-family: "Poppins", sans-serif;
+}
+.testemonials-tab-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+  transition: all 0.4s ease-in-out;
+}
+
+.testemonials-tab-content h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.testemonials-tab-content p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.testimonial-user .name {
+  font-weight: bold;
+  color: #1a202c;
+}
+
+.testimonial-user .location {
+  font-size: 0.9rem;
+  color: #718096;
+}
+.testimonial-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.testimonial-buttons button {
+  background-color: #4a5568;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.testimonial-buttons button:hover {
+  background-color: #2d3748;
+}
+.fade-enter {
+  opacity: 0;
+  transform: scale(0.98);
+}
+.fade-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.4s ease-in-out;
 }

@@ -10,6 +10,7 @@ import HomePage from "./Hero-Section/page";
 import FeaturedProduct from "./FeaturedProducts/featuredProducts";
 import BrandEssence from "./BrandEssence/page";
 import Operations from "./Operations/page";
+import Testimonials from "./Testimonials/testimonials";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <FeaturedProduct />
       <BrandEssence />
       <Operations />
+      <Testimonials />
     </div>
   );
 }
