@@ -3,43 +3,53 @@ import { tabDataSlider } from "../Data/tabData";
 
 const Testimonials = () => {
   const [index, setIndex] = useState(0);
+  const { title, text, name, location, img } = tabDataSlider[index];
+
+  const prev = () =>
+    setIndex(
+      (prev) => (prev - 1 + tabDataSlider.length) % tabDataSlider.length
+    );
+  const next = () => setIndex((prev) => (prev + 1) % tabDataSlider.length);
+
   return (
-    <div className="testimonials-main">
-      <div className="testimonials-text">
-        <h2>TESTIMONIALS</h2>
+    <section className="testimonials-section">
+      <div className="testimonials-header">
+        <h4>TESTIMONIALS</h4>
         <p>
-          Discover the stories of our delighted customers - thousands and
-          counting!{" "}
+          Discover the stories of our delighted
+          <br />
+          customers – thousands and counting!
         </p>
       </div>
-      <div className="testemonials-tab-content">
-        <h3>{tabDataSlider[index].title}</h3>
-        <p>{tabDataSlider[index].text}</p>
-        <div className="testimonial-user">
-          <p className="name">{tabDataSlider[index].name}</p>
-          <p className="location">{tabDataSlider[index].location}</p>
+
+      <div className="testimonial-content">
+        <button className="arrow-btn left" onClick={prev}>
+          ←
+        </button>
+
+        <div className="testimonial-box">
+          <h3>{title}</h3>
+          <div className="underline"></div>
+          <p className="testimonial-text">{text}</p>
+
+          <div className="user-info">
+            <img
+              src={img || "https://randomuser.me/api/portraits/women/75.jpg"}
+              alt={name}
+              className="user-img"
+            />
+            <div>
+              <p className="user-name">{name}</p>
+              <p className="user-location">{location}</p>
+            </div>
+          </div>
         </div>
-        <div className="testimonial-buttons">
-          <button
-            onClick={() =>
-              setIndex(
-                (prev) =>
-                  (prev - 1 + tabDataSlider.length) % tabDataSlider.length
-              )
-            }
-          >
-            Prev
-          </button>
-          <button
-            onClick={() =>
-              setIndex((prev) => (prev + 1) % tabDataSlider.length)
-            }
-          >
-            Next
-          </button>
-        </div>
+
+        <button className="arrow-btn right" onClick={next}>
+          →
+        </button>
       </div>
-    </div>
+    </section>
   );
 };
 
