@@ -153,35 +153,39 @@
 }
 
 .btn-primary {
-  background-color: #a855f7;
-  color: white;
-  padding: 12px 20px;
-  border: none;
+  padding: 0.7rem 1.5rem;
   font-size: 1rem;
-  font-weight: 700;
-  border-radius: 5px;
+  border-radius: 999px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  background: linear-gradient(90deg, #a855f7, #d946ef);
+  color: white;
 }
 
 .btn-primary:hover {
-  background-color: #7a44f1;
+  background: linear-gradient(90deg, #7504df, #ba51ca);
+  color: white;
 }
 
 .btn-secondary {
-  background-color: white;
-  color: black;
-  padding: 12px 20px;
-  border: 1px solid black;
+  padding: 0.7rem 1.5rem;
   font-size: 1rem;
-  font-weight: 700;
-  border-radius: 5px;
+  border-radius: 999px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
 .btn-secondary:hover {
-  background-color: #eee;
+  background: #444;
+  color: white;
 }
 .details {
   display: none;
@@ -202,6 +206,25 @@
   }
   .product-main-card {
     max-width: 270px;
+  }
+  .creeds-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40%;
+  }
+  .creeds-content-same p {
+    max-width: 400px;
+    font-size: 2rem;
+  }
+  .creeds-title {
+    display: flex;
+    justify-content: center;
+  }
+  .creeds-p {
+    display: flex;
+    justify-content: center;
   }
 }
 @media (max-width: 1024px) {
@@ -278,6 +301,147 @@
   }
   .btn-secondary {
     font-size: 0.7rem;
+  }
+  .creeds-title {
+    font-size: 1rem;
+    margin-top: 60px;
+  }
+
+  .creeds-p {
+    font-size: 1.4rem;
+    padding: 0 1rem;
+  }
+
+  .creeds-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .creeds-content-same {
+    max-width: 90%;
+  }
+  .creeds-content-same p {
+    font-size: 1rem;
+  }
+
+  .circle {
+    height: 50px;
+    width: 50px;
+  }
+
+  .creeds-icons-pic {
+    width: 32px;
+    height: 32px;
+    top: 9px;
+  }
+
+  .tab-btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+  @media (max-width: 768px) {
+    .operations-text {
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .operations-text h2 {
+      font-size: 0.85rem;
+    }
+
+    .operations-text p {
+      font-size: 1.4rem;
+      padding: 0 1rem;
+      line-height: 1.5;
+    }
+
+    .tabButton-div {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .tab-btn,
+    .tb-btn {
+      font-size: 0.95rem;
+      padding: 0.6rem 1.2rem;
+    }
+
+    .tabContent-div {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+
+    .tabContent-div .icon-circle {
+      width: 42px;
+      height: 42px;
+      font-size: 1rem;
+      padding: 0.8rem;
+    }
+
+    .tabContent-div .tab-texts h3 {
+      font-size: 1rem;
+    }
+
+    .tabContent-div .tab-texts p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+  }
+
+  .testimonials-header h4 {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .testimonials-header p {
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .testimonial-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .testimonial-box {
+    text-align: center;
+  }
+
+  .testimonial-box h3 {
+    font-size: 1.1rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .arrow-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 1.3rem;
+  }
+
+  .user-info {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .user-name {
+    font-size: 1rem;
+  }
+
+  .user-location {
+    font-size: 0.85rem;
   }
 }
 @media (max-width: 640px) {
@@ -461,9 +625,9 @@
   font-size: 1.1rem;
 }
 .featured-products-p {
-  font-size: 1.7rem;
-  /* font-weight: bolder; */
-  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  color: #1a1a1a;
+  max-width: 800px;
 }
 .allproducts-div {
   display: flex;
@@ -472,12 +636,20 @@
   margin-bottom: 50px;
 }
 .allproducts-button {
-  background-color: #a855f7;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, #a855f7, #d946ef);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
   color: white;
-  padding: 5px;
 }
 .allproducts-button:hover {
-  background-color: #7a44f1;
+  background: linear-gradient(90deg, #7504df, #ba51ca);
+  color: white;
 }
 .details-a {
   color: #a855f7;
@@ -489,44 +661,58 @@
 .creeds-section {
   border-top: 1px solid rgb(223, 210, 210);
   margin-bottom: 100px;
+  padding: 4rem 2rem;
 }
+
 .creeds-title {
   margin-top: 100px;
   text-transform: uppercase;
   color: #a855f7;
   font-size: 1.1rem;
+  text-align: center;
 }
+
 .creeds-p {
-  font-size: 1.7rem;
-  /* font-weight: bolder; */
-  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  color: #1a1a1a;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
+
 .creeds-content {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 50px;
+  flex-wrap: wrap;
 }
 
 .creeds-content-same {
   width: 100%;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   gap: 20px;
-  margin-top: 50px;
 }
+
 .bold {
   font-weight: bold;
 }
+
 .creeds-icons-pic {
   width: 40px;
   height: 40px;
   object-fit: contain;
   display: block;
-  margin-bottom: 1rem; /* ako treba razmak ispod */
+  margin-bottom: 1rem;
   position: absolute;
   top: 10px;
 }
+
 .circle {
   background-color: rgba(228, 167, 220, 0.562);
   border-radius: 9999px;
@@ -537,6 +723,8 @@
   align-items: center;
   position: relative;
 }
+
+/* button style, možeš ga već imati */
 .tab-btn {
   background-color: white;
   color: black;
@@ -555,112 +743,135 @@
   background-color: #a855f7;
   color: white;
 }
+
 .operations-main {
-  border-top: 1px solid rgb(223, 210, 210);
+  padding: 4rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  gap: 40px;
+  gap: 3rem;
+
+  border-top: 1px solid rgb(223, 210, 210);
 }
 .operations-text {
   margin-top: 100px;
 }
+
 .operations-text h2 {
-  margin-top: 100px;
   text-transform: uppercase;
   color: #a855f7;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
 }
+
 .operations-text p {
-  font-size: 1.7rem;
-  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+
+  color: #1a1a1a;
+  max-width: 800px;
+  margin: 0 auto;
 }
+
 .tabButton-div {
-  width: 63%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
+
+.tab-btn,
+.tb-btn {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.activetab {
+  background: linear-gradient(90deg, #a855f7, #d946ef);
+  color: white;
+}
+
 .tabContent-div {
-  margin-bottom: 100px;
   width: 63%;
+
+  padding: 2rem;
+  border-radius: 1rem;
+
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
-/* .testimonials-main {
-  border-top: 1px solid rgb(223, 210, 210);
+
+.tabContent-div .icon-circle {
+  background-color: #f3e8ff;
+  color: #a855f7;
+  padding: 1rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  height: 48px;
+  width: 48px;
+}
+
+.tabContent-div .tab-texts {
   display: flex;
   flex-direction: column;
-  padding-left: 18%;
+  gap: 0.5rem;
 }
-.testimonials-text h2 {
-  margin-top: 100px;
-  text-transform: uppercase;
-  color: #a855f7;
+
+.tabContent-div .tab-texts h3 {
+  font-weight: bold;
+  color: #1a1a1a;
   font-size: 1.1rem;
 }
-.testimonials-text p {
-  font-size: 1.7rem;
-  font-family: "Poppins", sans-serif;
+
+.tabContent-div .tab-texts p {
+  color: #555;
+  line-height: 1.6;
 }
-.testemonials-tab-content {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  padding-left: 30px;
-  padding-right: 30px;
-  position: relative;
-}
-.testimonial-buttons1 {
-  position: absolute;
-  top: 100px;
-  left: 0px;
-}
-.testimonial-buttons2 {
-  position: absolute;
-  top: 100px;
-  right: 0px;
-}
-.testimonial-buttons2:hover {
-  cursor: pointer;
-}
-.testimonial-buttons1:hover {
-  cursor: pointer;
-} */
+
 .testimonials-section {
   padding: 4rem 2rem;
   border-top: 1px solid rgb(223, 210, 210);
 }
 
 .testimonials-header h4 {
-  /* color: #a855f7;
-  letter-spacing: 1px;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  text-transform: uppercase; */
   margin-top: 100px;
   text-transform: uppercase;
   color: #a855f7;
   font-size: 1.1rem;
-  padding-left: 200px;
+  text-align: left;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .testimonials-header p {
   max-width: 800px;
-
   line-height: 1.4;
   font-size: 1.7rem;
   font-family: "Poppins", sans-serif;
-  padding-left: 200px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .testimonial-content {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 2rem;
-  padding-left: 200px;
+  max-width: 800px;
+  margin: 2rem auto 0;
 }
 
 .arrow-btn {
@@ -672,6 +883,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.2s ease;
+  font-size: 1.5rem;
 }
 
 .arrow-btn:hover {
