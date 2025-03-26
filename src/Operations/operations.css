@@ -92,3 +92,11 @@
   color: #555;
   line-height: 1.6;
 }
+@media (max-width: 500px) {
+  .tab-content {
+    padding: 0px;
+  }
+  .tabContent-div {
+    width: 100%;
+  }
+}

@@ -72,3 +72,113 @@
 .links p:hover {
   color: #ae68f0;
 }
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(250, 242, 242, 0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+  z-index: 1000;
+}
+
+/* Kada je otvoreno — dodaćeš ovu klasu u JSX */
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.item-hamburger {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+.item-hamburger a {
+  color: #213547;
+  font-weight: 900;
+}
+
+.item-hamburger:hover {
+  transform: scale(1.05);
+}
+
+.hamburger {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+  z-index: 1100;
+}
+/* Kada je otvoreno — dodaćeš ovu klasu u JSX */
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.item-hamburger {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+.item-hamburger a {
+  color: #213547;
+  font-weight: 900;
+}
+
+.item-hamburger:hover {
+  transform: scale(1.05);
+}
+
+.hamburger {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+  z-index: 1100;
+}
+@media (max-width: 640px) {
+  .hamburger {
+    display: block;
+  }
+  .links {
+    display: none;
+  }
+  .cart {
+    display: none;
+  }
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-h1 {
+    font-size: 2rem;
+  }
+  .parag {
+    font-size: 12px;
+  }
+  .btn-primary {
+    padding: 5px;
+    font-size: 0.9rem;
+  }
+  .btn-secondary {
+    padding: 5px;
+    font-size: 0.9rem;
+  }
+  .hero-right img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+  }
+}

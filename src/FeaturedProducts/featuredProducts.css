@@ -91,3 +91,26 @@
 .details-a:hover {
   color: #7a44f1;
 }
+@media (max-width: 1024px) {
+  .product-main-card {
+    max-width: 350px;
+  }
+  .product-representation {
+    flex-direction: column;
+  }
+  .featured-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .details {
+    /* display: block; */
+    display: flex;
+  }
+  .p-details {
+    text-align: start;
+  }
+  .details-a-hidden {
+    display: none;
+  }
+}
