@@ -1,5 +1,6 @@
 import Hamburger from "hamburger-react";
 import { useState } from "react";
+import "./header.css";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import fetchThreeProducts from "../Api/productsServices";
 import Product from "../ProductCard/productCard";
 import { useState } from "react";
+import "./featuredProducts.css";
 
 const FeaturedProduct = () => {
   const {

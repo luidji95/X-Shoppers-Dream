@@ -1,3 +1,5 @@
+import "./brandessence.css";
+
 const BrandEssence = () => {
   return (
     <div className="creeds-section">

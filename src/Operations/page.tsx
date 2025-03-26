@@ -2,7 +2,7 @@ import TabButton from "../TabContent/content";
 import { tabData } from "../Data/tabData";
 import { useState } from "react";
 import TabContent from "../TabContent/content";
-
+import "./operations.css";
 const Operations = () => {
   const [activeTab, setActiveTab] = useState("tab1");
   return (
@@ -26,7 +26,12 @@ const Operations = () => {
         {tabData
           .filter((tab) => tab.id === activeTab)
           .map((item) => (
-            <TabContent key={item.id} title={item.title} text={item.text} />
+            <TabContent
+              key={item.id}
+              title={item.title}
+              text={item.text}
+              img={item.img}
+            />
           ))}
       </div>
     </div>

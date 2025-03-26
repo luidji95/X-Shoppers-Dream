@@ -1,3 +1,5 @@
+import "./herosection.css";
+
 const HomePage = () => {
   return (
     <>

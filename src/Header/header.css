@@ -1,0 +1,74 @@
+.header-main {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.logo:hover {
+  cursor: pointer;
+}
+.links {
+  display: flex;
+  gap: 35px;
+}
+.hamburger {
+  display: none;
+}
+.cart {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.cart:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+.number-cart {
+  border-radius: 99999px;
+  background-color: #a855f7;
+  height: 20px;
+  width: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -3px;
+  bottom: 10px;
+}
+.links p {
+  position: relative;
+  margin: 0;
+  font-weight: 500;
+  color: #444;
+  transition: color 0.3s ease;
+}
+.links:hover {
+  cursor: pointer;
+}
+
+.links p::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #a855f7;
+
+  transition: width 0.3s ease;
+}
+
+.links p:hover::after {
+  width: 100%;
+}
+
+.links p:hover {
+  color: #ae68f0;
+}

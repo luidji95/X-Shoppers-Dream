@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { tabDataSlider } from "../Data/tabData";
-
+import "./testemonials.css";
 const Testimonials = () => {
   const [index, setIndex] = useState(0);
   const { title, text, name, location, img } = tabDataSlider[index];
@@ -33,11 +33,7 @@ const Testimonials = () => {
           <p className="testimonial-text">{text}</p>
 
           <div className="user-info">
-            <img
-              src={img || "https://randomuser.me/api/portraits/women/75.jpg"}
-              alt={name}
-              className="user-img"
-            />
+            <img src={img} alt={name} className="user-img" />
             <div>
               <p className="user-name">{name}</p>
               <p className="user-location">{location}</p>
