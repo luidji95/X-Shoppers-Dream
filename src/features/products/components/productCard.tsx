@@ -1,4 +1,4 @@
-import type { Product } from "../type/products";
+import type { Product } from "../types";
 import { useState } from "react";
 
 type ProductProps = {

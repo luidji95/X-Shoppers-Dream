@@ -1,10 +1,14 @@
-import { Props } from "../types/tabTypeContent";
-import "./tabcontent.css";
+import "./Operations.css";
+
+export type Props = {
+  title: string;
+  text: string;
+};
 
 const TabContent = ({ title, text, img }: Props) => {
   return (
     <div className="tab-content">
-      <div className="tab-icon-wrapper">
+      <div className="tab-icon-wrapper icon-circle">
         <img src={img} alt="icon" className="tab-icon" />
       </div>
       <div className="tab-text">

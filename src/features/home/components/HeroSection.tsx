@@ -1,3 +1,4 @@
+import Button from "../../../components/ui/Button";
 import "./herosection.css";
 
 const HomePage = () => {
@@ -12,8 +13,8 @@ const HomePage = () => {
             <p className="parag">Create your perfect space with our desingn.</p>
           </div>
           <div className="hero-buttons">
-            <button className="btn-primary">Explore products</button>
-            <button className="btn-secondary">Learn more ↓</button>
+            <Button variant="primary">Explore products</Button>
+            <Button variant="secondary">Explore products</Button>
           </div>
         </div>
         <div className="hero-right">

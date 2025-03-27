@@ -75,6 +75,10 @@
   height: 48px;
   width: 48px;
 }
+.tab-icon {
+  height: 25px;
+  width: 25px;
+}
 
 .tabContent-div .tab-texts {
   display: flex;

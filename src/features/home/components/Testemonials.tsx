@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { tabDataSlider } from "../Data/tabData";
+import { tabDataSlider } from "../../../data/tabData";
 import "./testemonials.css";
 const Testimonials = () => {
   const [index, setIndex] = useState(0);

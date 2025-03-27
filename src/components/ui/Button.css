@@ -1,0 +1,38 @@
+.btn {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Primarno dugme – gradijent */
+.primary {
+  background: linear-gradient(90deg, #a855f7, #d946ef);
+  color: white;
+}
+
+.primary:hover {
+  background: linear-gradient(90deg, #7504df, #ba51ca);
+  color: white;
+}
+
+/* Sekundarno dugme – svetlo */
+.secondary {
+  background-color: white;
+  color: black;
+}
+
+.secondary:hover {
+  background: #444;
+  color: white;
+}
+
+/* Disabled stanje */
+.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

@@ -1,3 +1,5 @@
+import type { Product } from "../types";
+
 const fetchThreeProducts = async (): Promise<Product[]> => {
   try {
     const response = await fetch(
