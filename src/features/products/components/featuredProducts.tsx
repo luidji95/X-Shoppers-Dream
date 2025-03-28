@@ -4,6 +4,7 @@ import type { Product } from "../types";
 import Product from "./Product";
 import { useState } from "react";
 import "./featuredProducts.css";
+import Loading from "../../../components/ui/Loading";
 
 const FeaturedProduct = () => {
   const {
@@ -17,7 +18,12 @@ const FeaturedProduct = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  if (isLoading) return <p>Loading products...</p>;
+  if (isLoading)
+    return (
+      <p>
+        <Loading />
+      </p>
+    );
   if (isError) return <p>Error: {error.message}</p>;
 
   return (
@@ -29,7 +35,7 @@ const FeaturedProduct = () => {
         </p>
       </div>
       <div className="product-representation">
-        {products.map((product) => (
+        {products?.map((product) => (
           <Product key={product.id} product={product} variant="featured" />
         ))}
       </div>

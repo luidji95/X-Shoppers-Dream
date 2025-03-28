@@ -6,7 +6,7 @@ type ProductProps = {
 };
 
 const Product = ({ product, variant = "featured" }: ProductProps) => {
-  const { image, name, price, description } = product;
+  const { image, name, price } = product;
 
   return (
     <div className={`product-main-card ${variant}`}>
