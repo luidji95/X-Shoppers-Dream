@@ -1,14 +1,15 @@
-import type { Product } from "../types";
-import { useState } from "react";
+import "./Products.css";
 
 type ProductProps = {
   product: Product;
+  variant?: "featured" | "list";
 };
 
-const Product = ({ product }: ProductProps) => {
+const Product = ({ product, variant = "featured" }: ProductProps) => {
   const { image, name, price, description } = product;
+
   return (
-    <div className="product-main-card">
+    <div className={`product-main-card ${variant}`}>
       <img src={image} alt={name} />
       <div className="details-a-hidden">
         <a href="#" className="details-a">
@@ -24,9 +25,7 @@ const Product = ({ product }: ProductProps) => {
           <h3 className="price">${price.toLocaleString()}</h3>
         </div>
       </div>
-      <div className="details">
-        <p className="p-details">{description}</p>
-      </div>
+
       <div className="details">
         <button className="allproducts-button">Details</button>
       </div>

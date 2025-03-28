@@ -1,9 +1,15 @@
 import Hamburger from "hamburger-react";
 import { useState } from "react";
 import "./header.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigateToProducts = () => {
+    navigate(`/products`);
+  };
 
   return (
     <>
@@ -29,7 +35,7 @@ const Header = () => {
         <div className="links">
           <p>Home</p>
 
-          <p>Products</p>
+          <p onClick={handleNavigateToProducts}>Products</p>
         </div>
 
         <div className="hamburger">

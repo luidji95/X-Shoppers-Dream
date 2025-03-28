@@ -14,7 +14,7 @@ const HomePage = () => {
           </div>
           <div className="hero-buttons">
             <Button variant="primary">Explore products</Button>
-            <Button variant="secondary">Explore products</Button>
+            <Button variant="secondary">Learn more</Button>
           </div>
         </div>
         <div className="hero-right">
