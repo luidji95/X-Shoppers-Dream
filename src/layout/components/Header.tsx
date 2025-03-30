@@ -11,6 +11,10 @@ const Header = () => {
     navigate(`/products`);
   };
 
+  const handleNavigateToHome = () => {
+    navigate(`/`);
+  };
+
   return (
     <>
       <div className="header-main">
@@ -33,7 +37,7 @@ const Header = () => {
         </div>
 
         <div className="links">
-          <p>Home</p>
+          <p onClick={handleNavigateToHome}>Home</p>
 
           <p onClick={handleNavigateToProducts}>Products</p>
         </div>

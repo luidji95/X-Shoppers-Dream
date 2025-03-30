@@ -5,25 +5,25 @@ import Product from "./Product";
 import { useState } from "react";
 import "./featuredProducts.css";
 import Loading from "../../../components/ui/Loading";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const FeaturedProduct = () => {
+  const navigate = useNavigate();
+  const handleNavigateToProducts = () => {
+    navigate(`/products`);
+  };
   const {
     data: products,
     isLoading,
     isError,
     error,
   } = useQuery<Product[]>({
-    queryKey: ["products"],
+    queryKey: ["featured-products"],
     queryFn: fetchThreeProducts,
     staleTime: 1000 * 60 * 5,
   });
 
-  if (isLoading)
-    return (
-      <p>
-        <Loading />
-      </p>
-    );
+  if (isLoading) return <Loading />;
   if (isError) return <p>Error: {error.message}</p>;
 
   return (
@@ -40,7 +40,12 @@ const FeaturedProduct = () => {
         ))}
       </div>
       <div className="allproducts-div">
-        <button className="allproducts-button">All products</button>
+        <button
+          className="allproducts-button"
+          onClick={handleNavigateToProducts}
+        >
+          All products
+        </button>
       </div>
     </div>
   );

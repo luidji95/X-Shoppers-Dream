@@ -4,6 +4,7 @@ import Product from "./Product";
 import "./featuredProducts.css";
 import "./productsPage.css";
 import Loading from "../../../components/ui/Loading";
+import ProductFilter from "./ProductFilters";
 
 const ProductsPage = () => {
   const {
@@ -12,7 +13,7 @@ const ProductsPage = () => {
     isError,
     error,
   } = useQuery<Product[]>({
-    queryKey: ["products"],
+    queryKey: ["all-products"],
     queryFn: fetchAllProducts,
     staleTime: 1000 * 6 * 5,
   });
@@ -27,9 +28,9 @@ const ProductsPage = () => {
 
   return (
     <div className="products-page">
-      <div className="products-header">
-        <h3>{products?.length} products found</h3>
-        <div className="underline"></div>
+      <div className="products-header"></div>
+      <div className="products-filter">
+        <ProductFilter />
       </div>
 
       <div className="products-grid">

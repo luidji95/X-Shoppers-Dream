@@ -5,7 +5,7 @@ type ProductProps = {
   variant?: "featured" | "list";
 };
 
-const Product = ({ product, variant = "featured" }: ProductProps) => {
+const Product = ({ product, variant = "" }: ProductProps) => {
   const { image, name, price } = product;
 
   return (
