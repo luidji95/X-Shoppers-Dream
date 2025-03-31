@@ -2,7 +2,7 @@ import "./brandessence.css";
 
 const BrandEssence = () => {
   return (
-    <div className="creeds-section">
+    <div className="creeds-section borderbottom">
       <div className="creeds-text">
         <h2 className="creeds-title">Creeds Section</h2>
         <p className="creeds-p">

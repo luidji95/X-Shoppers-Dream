@@ -15,6 +15,10 @@ export const fetchThreeProducts = async (): Promise<Product[]> => {
       price: product.price,
       name: product.name,
       description: product.description,
+      category: product.category,
+      colors: product.colors,
+      company: product.company,
+      shipping: product.shipping,
     }));
   } catch (error) {
     console.log(`Error fethcing products`, error);
@@ -37,6 +41,10 @@ export const fetchAllProducts = async (): Promise<Product[]> => {
       price: product.price,
       name: product.name,
       description: product.description,
+      category: product.category,
+      colors: product.colors,
+      company: product.company,
+      shipping: product.shipping,
     }));
   } catch (error) {
     console.log(`Error fetching products`, error);

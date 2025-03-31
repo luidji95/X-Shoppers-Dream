@@ -1,6 +1,6 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  /* max-width: 1280px;
+  margin: 0 auto; */
   width: 100%;
 }
 
@@ -205,4 +205,8 @@
   .user-location {
     font-size: 0.85rem;
   }
+}
+
+.borderbottom {
+  border-top: 1px solid rgb(223, 210, 210);
 }

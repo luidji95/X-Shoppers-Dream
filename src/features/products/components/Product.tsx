@@ -1,3 +1,5 @@
+import type { Product } from "../types";
+import Button from "../../../components/ui/Button";
 import "./Products.css";
 
 type ProductProps = {
@@ -5,17 +7,12 @@ type ProductProps = {
   variant?: "featured" | "list";
 };
 
-const Product = ({ product, variant = "" }: ProductProps) => {
-  const { image, name, price } = product;
+const Product = ({ product, variant = "featured" }: ProductProps) => {
+  const { image, name, price, description } = product;
 
   return (
     <div className={`product-main-card ${variant}`}>
       <img src={image} alt={name} />
-      <div className="details-a-hidden">
-        <a href="#" className="details-a">
-          Detaljnije
-        </a>
-      </div>
 
       <div className="product-name-price">
         <div className="product-name">
@@ -26,8 +23,10 @@ const Product = ({ product, variant = "" }: ProductProps) => {
         </div>
       </div>
 
-      <div className="details">
-        <button className="allproducts-button">Details</button>
+      {/* MOBILE ONLY */}
+      <div className="mobile-only">
+        <p className="p-details">{description}</p>
+        <Button variant="primary">Details</Button>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 .product-main-card {
-  width: 350px;
-  min-height: 300px;
+  width: 250px;
+  min-height: 200px;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -13,7 +13,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   margin-bottom: 50px;
-  flex-shrink: 0; /* zbog horizontalnog scrolla */
+  flex-shrink: 0;
 }
 
 .product-main-card:hover {
@@ -67,10 +67,37 @@
 
 .p-details {
   text-align: start;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
+/* Desktop: prikazi dugme, sakrij mobile opis */
+.desktop-only-details {
+  display: block;
+}
+
+.mobile-only-description {
+  display: none;
+}
+
+/* Mobilni prikaz (ispod 1024px) prikazuje description i dugme */
+.mobile-only {
+  display: none;
+}
+
+/* Responsive logika */
 @media (max-width: 1024px) {
-  .product-main-card {
-    max-width: 350px;
+  .mobile-only {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .p-details {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
   }
 }

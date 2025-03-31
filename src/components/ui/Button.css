@@ -1,7 +1,7 @@
 .btn {
   padding: 0.7rem 1.5rem;
   font-size: 1rem;
-  border-radius: 999px;
+  /* border-radius: 999px; */
   border: none;
   cursor: pointer;
   font-weight: 500;
@@ -9,7 +9,6 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Primarno dugme – gradijent */
 .primary {
   background: linear-gradient(90deg, #a855f7, #d946ef);
   color: white;
@@ -20,7 +19,6 @@
   color: white;
 }
 
-/* Sekundarno dugme – svetlo */
 .secondary {
   background-color: white;
   color: black;
@@ -31,8 +29,44 @@
   color: white;
 }
 
-/* Disabled stanje */
 .btn:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+.activetab {
+  background-color: #a855f7;
+  color: white;
+  border-color: #a855f7;
+}
+.tab-btn,
+.tb-btn {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.activetab {
+  background: linear-gradient(90deg, #a855f7, #d946ef);
+  color: white;
+}
+.reset-filters button {
+  padding: 0.6rem 1.2rem;
+  background-color: #e92222;
+  color: #ffffff;
+  border: 1px solid #fca5a5;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reset-filters button:hover {
+  background-color: #f82727;
+  color: white;
+  border-color: #f87171;
 }

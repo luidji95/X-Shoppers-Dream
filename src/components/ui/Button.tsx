@@ -5,7 +5,7 @@ type ButtonProps = {
   children: ReactNode; // Sve što stavimo između <Button>ovde</Button>
   onClick?: () => void; // Klik handler, opcioni
   type?: "button" | "submit"; // Za forme
-  variant?: "primary" | "secondary"; // Stilizacija
+  variant?: "primary" | "secondary" | "tab" | "danger"; // Stilizacija
   className?: string; // Dodatna klasa ako ti treba
   disabled?: boolean; // Da li je dugme onemogućeno
 };

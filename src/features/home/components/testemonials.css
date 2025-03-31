@@ -1,6 +1,6 @@
 .testimonials-section {
-  padding: 4rem 2rem;
-  border-top: 1px solid rgb(223, 210, 210);
+  padding: 0 20%;
+  margin-bottom: 100px;
 }
 
 .testimonials-header h4 {
@@ -40,6 +40,9 @@
   cursor: pointer;
   transition: transform 0.2s ease;
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .arrow-btn:hover {

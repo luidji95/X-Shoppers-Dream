@@ -12,7 +12,7 @@ const Testimonials = () => {
   const next = () => setIndex((prev) => (prev + 1) % tabDataSlider.length);
 
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section borderbottom">
       <div className="testimonials-header">
         <h4>TESTIMONIALS</h4>
         <p>

@@ -1,7 +1,6 @@
 .creeds-section {
-  border-top: 1px solid rgb(223, 210, 210);
   margin-bottom: 100px;
-  padding: 4rem 2rem;
+  padding: 0 20%;
 }
 
 .creeds-title {
@@ -9,21 +8,18 @@
   text-transform: uppercase;
   color: #a855f7;
   font-size: 1.1rem;
-  text-align: center;
 }
 
 .creeds-p {
   font-size: 2rem;
   color: #1a1a1a;
   max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
 }
 
 .creeds-content {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2rem;
   margin-top: 50px;
   flex-wrap: wrap;
