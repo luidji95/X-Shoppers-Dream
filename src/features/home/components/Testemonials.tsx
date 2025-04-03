@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { tabDataSlider } from "../../../data/tabData";
 import "./testemonials.css";
+import TestimonialCard from "./TestimonialCard";
+
 const Testimonials = () => {
   const [index, setIndex] = useState(0);
-  const { title, text, name, location, img } = tabDataSlider[index];
 
-  const prev = () =>
-    setIndex(
-      (prev) => (prev - 1 + tabDataSlider.length) % tabDataSlider.length
-    );
-  const next = () => setIndex((prev) => (prev + 1) % tabDataSlider.length);
+  const handlePrev = () => {
+    setIndex((prev) => (prev === 0 ? tabDataSlider.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setIndex((prev) => (prev === tabDataSlider.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <section className="testimonials-section borderbottom">
@@ -22,28 +25,21 @@ const Testimonials = () => {
         </p>
       </div>
 
-      <div className="testimonial-content">
-        <button className="arrow-btn left" onClick={prev}>
-          ←
-        </button>
-
-        <div className="testimonial-box">
-          <h3>{title}</h3>
-          <div className="underline"></div>
-          <p className="testimonial-text">{text}</p>
-
-          <div className="user-info">
-            <img src={img} alt={name} className="user-img" />
-            <div>
-              <p className="user-name">{name}</p>
-              <p className="user-location">{location}</p>
-            </div>
-          </div>
-        </div>
-
-        <button className="arrow-btn right" onClick={next}>
-          →
-        </button>
+      <div className="testimonial-slider-wrapper">
+        {tabDataSlider.map((slide, i) => (
+          <TestimonialCard
+            key={i}
+            id={i}
+            index={index}
+            title={slide.title}
+            text={slide.text}
+            name={slide.name}
+            location={slide.location}
+            img={slide.img}
+            onPrev={handlePrev}
+            onNext={handleNext}
+          />
+        ))}
       </div>
     </section>
   );
