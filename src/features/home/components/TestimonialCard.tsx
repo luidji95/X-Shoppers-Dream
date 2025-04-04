@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { tabDataSlider } from "../../../data/tabData";
 import "./testemonials.css";
 
 type TestimonialProps = {
@@ -10,6 +12,7 @@ type TestimonialProps = {
   img: string;
   onPrev: () => void;
   onNext: () => void;
+  isActive: boolean;
 };
 
 const TestimonialCard = ({
@@ -22,6 +25,7 @@ const TestimonialCard = ({
   img,
   onPrev,
   onNext,
+  isActive,
 }: TestimonialProps) => {
   return (
     <div
@@ -37,7 +41,10 @@ const TestimonialCard = ({
 
       <div className="testimonial-box">
         <h3>{title}</h3>
-        <div className="underline"></div>
+        <div
+          className={`underline ${isActive ? "active" : ""}`}
+          onAnimationEnd={onNext}
+        ></div>
         <p className="testimonial-text">{text}</p>
 
         <div className="user-info">

@@ -25,6 +25,8 @@
   position: relative;
   overflow: hidden;
   height: 400px;
+  width: 800px;
+  margin-left: 10%;
 }
 
 .testimonial-content {
@@ -46,7 +48,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
   cursor: pointer;
   transition: transform 0.2s ease;
   font-size: 1.5rem;
@@ -71,10 +73,20 @@
 }
 
 .underline {
-  width: 60px;
   height: 3px;
   background-color: #a855f7;
   margin-bottom: 1rem;
+}
+.underline.active {
+  animation: fillUnderline 5s forwards;
+}
+@keyframes fillUnderline {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 .testimonial-text {

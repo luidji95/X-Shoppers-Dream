@@ -38,6 +38,7 @@ const Testimonials = () => {
             img={slide.img}
             onPrev={handlePrev}
             onNext={handleNext}
+            isActive={i === index}
           />
         ))}
       </div>
