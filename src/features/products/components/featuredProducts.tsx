@@ -6,13 +6,23 @@ import "./featuredProducts.css";
 import Loading from "../../../components/ui/Loading";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../components/ui/Button";
+import { useEffect, useLayoutEffect, useRef } from "react";
+import { sectionAnimation } from "../../../useIntersectionObserver";
 
 const FeaturedProduct = () => {
   const navigate = useNavigate();
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const handleNavigateToProducts = () => {
     navigate("/products");
   };
+
+  useLayoutEffect(() => {
+    console.log("Use effect se okida!");
+    if (sectionRef.current) {
+      sectionAnimation(sectionRef);
+    }
+  }, []);
 
   const {
     data: products,
@@ -29,7 +39,7 @@ const FeaturedProduct = () => {
   if (isError) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="featured-main borderbottom">
+    <div className="featured-main borderbottom" ref={sectionRef}>
       <div className="fetured-text">
         <h2 className="featured-products-h2">Featured Products</h2>
         <p className="featured-products-p">
