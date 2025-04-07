@@ -8,7 +8,7 @@ export const fetchThreeProducts = async (): Promise<Product[]> => {
     if (!response.ok) throw new Error(`Failed to fetch products`);
 
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data.slice(0, 3).map((product) => ({
       id: product.id,
       image: product.image,

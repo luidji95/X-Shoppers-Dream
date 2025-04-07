@@ -17,13 +17,6 @@ const FeaturedProduct = () => {
     navigate("/products");
   };
 
-  useLayoutEffect(() => {
-    console.log("Use effect se okida!");
-    if (sectionRef.current) {
-      sectionAnimation(sectionRef);
-    }
-  }, []);
-
   const {
     data: products,
     isLoading,
@@ -34,6 +27,12 @@ const FeaturedProduct = () => {
     queryFn: fetchThreeProducts,
     staleTime: 1000 * 60 * 5,
   });
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      sectionAnimation(sectionRef.current);
+    }
+  }, [products]);
 
   if (isLoading) return <Loading />;
   if (isError) return <p>Error: {error.message}</p>;
