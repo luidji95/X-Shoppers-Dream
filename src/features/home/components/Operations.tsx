@@ -1,13 +1,14 @@
 import TabButton from "../../../TabContent/content";
 import { tabData } from "../../../data/tabData";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import TabContent from "./TabContent";
 import "./operations.css";
 import Button from "../../../components/ui/Button";
 const Operations = () => {
   const [activeTab, setActiveTab] = useState("tab1");
+  const sectionRef = useRef<HTMLDivElement>(null);
   return (
-    <div className="operations-main borderbottom">
+    <div className="operations-main borderbottom" ref={sectionRef}>
       <div className="operations-text">
         <h2>Operations</h2>
         <p> Where simplicity meets efficiency to bring your home to life.</p>

@@ -6,8 +6,8 @@ import "./featuredProducts.css";
 import Loading from "../../../components/ui/Loading";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../components/ui/Button";
-import { useEffect, useLayoutEffect, useRef } from "react";
-import { sectionAnimation } from "../../../useIntersectionObserver";
+import { useEffect, useRef } from "react";
+import { useIntersectionObsever } from "../../../useIntersectionObserver";
 
 const FeaturedProduct = () => {
   const navigate = useNavigate();
@@ -28,11 +28,7 @@ const FeaturedProduct = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  useEffect(() => {
-    if (sectionRef.current) {
-      sectionAnimation(sectionRef.current);
-    }
-  }, [products]);
+  useIntersectionObsever(sectionRef);
 
   if (isLoading) return <Loading />;
   if (isError) return <p>Error: {error.message}</p>;

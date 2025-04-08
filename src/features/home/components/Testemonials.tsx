@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { tabDataSlider } from "../../../data/tabData";
 import "./testemonials.css";
 import TestimonialCard from "./TestimonialCard";
 
 const Testimonials = () => {
   const [index, setIndex] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const handlePrev = () => {
     setIndex((prev) => (prev === 0 ? tabDataSlider.length - 1 : prev - 1));
@@ -15,7 +16,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="testimonials-section borderbottom">
+    <section className="testimonials-section borderbottom" ref={sectionRef}>
       <div className="testimonials-header">
         <h4>TESTIMONIALS</h4>
         <p>
