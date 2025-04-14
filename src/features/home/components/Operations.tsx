@@ -4,11 +4,14 @@ import { useRef, useState } from "react";
 import TabContent from "./TabContent";
 import "./operations.css";
 import Button from "../../../components/ui/Button";
+import { useIntersectionObserver } from "../../../useIntersectionObserver";
 const Operations = () => {
   const [activeTab, setActiveTab] = useState("tab1");
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const operationRef = useRef<HTMLDivElement>(null);
+
+  useIntersectionObserver(operationRef);
   return (
-    <div className="operations-main borderbottom" ref={sectionRef}>
+    <div className="operations-main borderbottom slide-init" ref={operationRef}>
       <div className="operations-text">
         <h2>Operations</h2>
         <p> Where simplicity meets efficiency to bring your home to life.</p>

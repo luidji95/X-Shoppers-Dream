@@ -1,11 +1,19 @@
 import "./brandessence.css";
 import { useEffect, useRef } from "react";
-import { sectionAnimation } from "../../../useIntersectionObserver";
+import {
+  sectionAnimation,
+  useIntersectionObserver,
+} from "../../../useIntersectionObserver";
 
 const BrandEssence = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const brandEssenceRef = useRef<HTMLDivElement>(null);
+
+  useIntersectionObserver(brandEssenceRef);
   return (
-    <div className="creeds-section borderbottom" ref={sectionRef}>
+    <div
+      className="creeds-section borderbottom slide-init"
+      ref={brandEssenceRef}
+    >
       <div className="creeds-text">
         <h2 className="creeds-title">Creeds Section</h2>
         <p className="creeds-p">

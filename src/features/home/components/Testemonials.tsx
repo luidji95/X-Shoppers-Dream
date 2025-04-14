@@ -2,10 +2,11 @@ import { useState, useRef } from "react";
 import { tabDataSlider } from "../../../data/tabData";
 import "./testemonials.css";
 import TestimonialCard from "./TestimonialCard";
+import { useIntersectionObserver } from "../../../useIntersectionObserver";
 
 const Testimonials = () => {
   const [index, setIndex] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
 
   const handlePrev = () => {
     setIndex((prev) => (prev === 0 ? tabDataSlider.length - 1 : prev - 1));
@@ -15,8 +16,12 @@ const Testimonials = () => {
     setIndex((prev) => (prev === tabDataSlider.length - 1 ? 0 : prev + 1));
   };
 
+  useIntersectionObserver(testimonialsRef);
   return (
-    <section className="testimonials-section borderbottom" ref={sectionRef}>
+    <section
+      className="testimonials-section borderbottom slide-init"
+      ref={testimonialsRef}
+    >
       <div className="testimonials-header">
         <h4>TESTIMONIALS</h4>
         <p>
