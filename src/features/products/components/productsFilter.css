@@ -1,27 +1,84 @@
-.products-filter {
-  display: flex;
-}
-.category-items {
+.product-filter-main {
+  width: 75%;
+  padding: 1.5rem;
+  background-color: #f8f8f8;
   display: flex;
   flex-direction: column;
-  align-items: start;
-}
-.search-input {
-  margin-bottom: 1rem;
+  gap: 1.5rem;
+  border-radius: 10px;
+  margin-right: 100px;
 }
 
 .search-input input {
-  padding: 0.7rem 1rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #d946ef;
+  border-radius: 5px;
   outline: none;
-  transition: all 0.3s ease;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.search-input input:focus {
-  border-color: #a855f7;
-  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
+.filter-title {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  color: #222;
+}
+
+.category-items span {
+  display: block;
+  margin: 0.25rem 0;
+  cursor: pointer;
+}
+
+.category-items span.active {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #d946ef;
+}
+
+.filter-company select {
+  width: 100%;
+  padding: 0.4rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.color-options {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.color-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.color-circle.active {
+  outline: 2px solid #222;
+  outline-offset: 2px;
+}
+
+.filter-price input[type="range"] {
+  width: 100%;
+}
+
+.price-value {
+  color: #d946ef;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.filter-shipping label {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reset-filters {
+  margin-top: 1rem;
 }
