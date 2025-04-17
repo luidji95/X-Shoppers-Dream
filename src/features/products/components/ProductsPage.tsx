@@ -1,4 +1,4 @@
-import { isCancelledError, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { fetchAllProducts } from "../api/productsServices";
 import Product from "./Product";
 import "./featuredProducts.css";
@@ -13,7 +13,7 @@ const ProductsPage = () => {
     category: "All",
     company: "All",
     color: "All",
-    price: "3099.99",
+    price: 3099.99,
     freeShipping: false,
   });
 
@@ -22,19 +22,11 @@ const ProductsPage = () => {
     isLoading,
     isError,
     error,
-  } = useQuery<Product[]>({
+  } = useQuery({
     queryKey: ["all-products"],
     queryFn: fetchAllProducts,
-    staleTime: 1000 * 6 * 5,
+    staleTime: 1000 * 60 * 5,
   });
-
-  if (isLoading)
-    return (
-      <p>
-        <Loading />
-      </p>
-    );
-  if (isError) return <p>Error: {error.message}</p>;
 
   const filteredProducts = products?.filter((product) => {
     const matchesSearch =
@@ -42,17 +34,19 @@ const ProductsPage = () => {
       product.name.toLowerCase().includes(filters.search.toLowerCase());
 
     const matchesCategory =
-      filters.category === "All" || product.category === filters.category;
+      filters.category === "All" ||
+      product.category.toLowerCase() === filters.category.toLowerCase();
 
     const matchesCompany =
-      filters.company === "All" || product.company === filters.company;
+      filters.company === "All" ||
+      product.company.toLowerCase() === filters.company.toLowerCase();
 
     const matchesColor =
       filters.color === "All" || product.colors.includes(filters.color);
 
     const matchesPrice = product.price <= Number(filters.price);
 
-    const matchesShipping = !filters.freeShipping || product.shipping;
+    const matchesShipping = !filters.freeShipping || product.shipping === true;
 
     return (
       matchesSearch &&
@@ -64,17 +58,23 @@ const ProductsPage = () => {
     );
   });
 
+  if (isLoading) return <Loading />;
+  if (isError) return <p>Error: {error.message}</p>;
+
   return (
     <div className="products-page">
-      <div className="products-header"></div>
       <div className="products-filter">
         <ProductFilter onFilterChange={setFilters} />
       </div>
 
       <div className="products-grid">
-        {filteredProducts?.map((item) => (
-          <Product key={item.id} product={item} variant="list" />
-        ))}
+        {filteredProducts?.length ? (
+          filteredProducts.map((item) => (
+            <Product key={item.id} product={item} variant="list" />
+          ))
+        ) : (
+          <p>No products match your filters.</p>
+        )}
       </div>
     </div>
   );

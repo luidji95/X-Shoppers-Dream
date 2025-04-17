@@ -8,7 +8,7 @@ type ProductFilterProp = {
     category: string;
     company: string;
     color: string;
-    price: string;
+    price: number;
     freeShipping: boolean;
   }) => void;
 };
@@ -18,7 +18,7 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProp) => {
   const [category, setCategory] = useState("All");
   const [company, setCompany] = useState("All");
   const [color, setColor] = useState("All");
-  const [price, setPrice] = useState("3099.99");
+  const [price, setPrice] = useState(3099.99);
   const [freeShipping, setFreeShipping] = useState(false);
 
   const handleClearFilters = () => {
@@ -26,7 +26,7 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProp) => {
     setCategory("All");
     setCompany("All");
     setColor("All");
-    setPrice("3099.99");
+    setPrice(3099.99);
     setFreeShipping(false);
   };
 
@@ -43,7 +43,6 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProp) => {
 
   return (
     <div className="product-filter-main">
-      {/* Search */}
       <div className="search-input">
         <input
           type="text"
@@ -53,7 +52,6 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProp) => {
         />
       </div>
 
-      {/* Category */}
       <div className="filter-category">
         <p className="filter-title">Category</p>
         <div className="category-items">
@@ -77,7 +75,6 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProp) => {
         </div>
       </div>
 
-      {/* Company */}
       <div className="filter-company">
         <p className="filter-title">Company</p>
         <select value={company} onChange={(e) => setCompany(e.target.value)}>
@@ -89,7 +86,6 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProp) => {
         </select>
       </div>
 
-      {/* Color */}
       <div className="filter-color">
         <p className="filter-title">Color</p>
         <div className="color-options">
@@ -109,26 +105,19 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProp) => {
         </div>
       </div>
 
-      {/* Price */}
       <div className="filter-price">
         <p className="filter-title">Price</p>
-        <p className="price-value">
-          $
-          {Number(price).toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-          })}
-        </p>
+        <p className="price-value">${price.toFixed(2)}</p>
         <input
           type="range"
           min={0}
           max={3099.99}
           step={0.01}
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          onChange={(e) => setPrice(Number(e.target.value))}
         />
       </div>
 
-      {/* Shipping */}
       <div className="filter-shipping">
         <label>
           Free shipping{" "}
@@ -140,7 +129,6 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProp) => {
         </label>
       </div>
 
-      {/* Clear */}
       <div className="reset-filters">
         <Button variant="danger" onClick={handleClearFilters}>
           Clear filters
