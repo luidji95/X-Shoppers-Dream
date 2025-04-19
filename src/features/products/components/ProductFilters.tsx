@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import "./productsFilter.css";
 import Button from "../../../components/ui/Button";
+import type { Product } from "../types";
 
-type ProductFilterProp = {
-  onFilterChange: (filters: {
-    search: string;
-    category: string;
-    company: string;
-    color: string;
-    price: number;
-    freeShipping: boolean;
-  }) => void;
+type ProductFilterProps = {
+  products: Product[];
+  setFilteredProducts: (products: Product[]) => void;
 };
 
-const ProductFilter = ({ onFilterChange }: ProductFilterProp) => {
+const ProductFilter = ({
+  products,
+  setFilteredProducts,
+}: ProductFilterProps) => {
+  console.log("⬇️ Primljeni proizvodi:", products);
   const [searchInput, setSearchInput] = useState("");
   const [category, setCategory] = useState("All");
   const [company, setCompany] = useState("All");
@@ -30,16 +29,44 @@ const ProductFilter = ({ onFilterChange }: ProductFilterProp) => {
     setFreeShipping(false);
   };
 
+  const handleFilterChange = () => {
+    console.log("handleFilterChange pozvan");
+    let filtered = [...products];
+
+    if (searchInput) {
+      filtered = filtered.filter((p) =>
+        p.name.toLowerCase().includes(searchInput.toLowerCase())
+      );
+    }
+
+    if (category !== "All") {
+      filtered = filtered.filter(
+        (p) => p.category.toLowerCase() === category.toLowerCase()
+      );
+    }
+
+    if (company !== "All") {
+      filtered = filtered.filter(
+        (p) => p.company.toLowerCase() === company.toLowerCase()
+      );
+    }
+
+    if (color !== "All") {
+      filtered = filtered.filter((p) => p.colors.includes(color));
+    }
+
+    filtered = filtered.filter((p) => p.price <= price);
+
+    if (freeShipping) {
+      filtered = filtered.filter((p) => p.shipping === true);
+    }
+    console.log("🎯 Filtrirano proizvoda:", filtered.length);
+    setFilteredProducts(filtered);
+  };
+
   useEffect(() => {
-    onFilterChange({
-      search: searchInput,
-      category,
-      company,
-      color,
-      price,
-      freeShipping,
-    });
-  }, [searchInput, category, company, color, price, freeShipping]);
+    handleFilterChange();
+  }, [searchInput, category, company, color, price, freeShipping, products]);
 
   return (
     <div className="product-filter-main">
