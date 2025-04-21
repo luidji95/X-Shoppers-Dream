@@ -4,7 +4,7 @@ import Product from "./Product";
 import "./productsPage.css";
 import Loading from "../../../components/ui/Loading";
 import ProductFilter from "./ProductFilters";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProductsPage = () => {
   const {
@@ -17,9 +17,16 @@ const ProductsPage = () => {
     queryFn: fetchAllProducts,
     staleTime: 1000 * 60 * 5,
   });
-  console.log("Svi proizvodi", products);
+  console.log("Svi fetchovani proizvodi", products);
 
   const [filteredProducts, setFilteredProducts] = useState([]);
+
+  useEffect(() => {
+    if (products) {
+      setFilteredProducts(products);
+    }
+  }, [products]);
+  console.log("Filtered kopija sa kojom radim", products);
 
   if (isLoading) return <Loading />;
   if (isError) return <p>Error: {error.message}</p>;

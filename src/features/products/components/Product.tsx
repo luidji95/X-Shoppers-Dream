@@ -1,4 +1,4 @@
-import type { Product } from "../types";
+// import type { Product } from "../types";
 import Button from "../../../components/ui/Button";
 import "./Products.css";
 

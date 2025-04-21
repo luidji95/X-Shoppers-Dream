@@ -12,25 +12,37 @@ const ProductFilter = ({
   products,
   setFilteredProducts,
 }: ProductFilterProps) => {
-  console.log("⬇️ Primljeni proizvodi:", products);
   const [searchInput, setSearchInput] = useState("");
   const [category, setCategory] = useState("All");
   const [company, setCompany] = useState("All");
   const [color, setColor] = useState("All");
-  const [price, setPrice] = useState(3099.99);
+  const [price, setPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
   const [freeShipping, setFreeShipping] = useState(false);
+
+  // Dinamički izvlačimo kategorije, kompanije i boje
+  const categories = ["All", ...new Set(products.map((p) => p.category))];
+  const companies = ["All", ...new Set(products.map((p) => p.company))];
+  const colors = ["All", ...new Set(products.flatMap((p) => p.colors))];
+
+  useEffect(() => {
+    if (products.length) {
+      const maxProductPrice = Math.max(...products.map((p) => p.price));
+      setPrice(maxProductPrice);
+      setMaxPrice(maxProductPrice);
+    }
+  }, [products]);
 
   const handleClearFilters = () => {
     setSearchInput("");
     setCategory("All");
     setCompany("All");
     setColor("All");
-    setPrice(3099.99);
+    setPrice(maxPrice);
     setFreeShipping(false);
   };
 
   const handleFilterChange = () => {
-    console.log("handleFilterChange pozvan");
     let filtered = [...products];
 
     if (searchInput) {
@@ -60,7 +72,7 @@ const ProductFilter = ({
     if (freeShipping) {
       filtered = filtered.filter((p) => p.shipping === true);
     }
-    console.log("🎯 Filtrirano proizvoda:", filtered.length);
+
     setFilteredProducts(filtered);
   };
 
@@ -82,15 +94,7 @@ const ProductFilter = ({
       <div className="filter-category">
         <p className="filter-title">Category</p>
         <div className="category-items">
-          {[
-            "All",
-            "Living Room",
-            "Bedroom",
-            "Office",
-            "Kids",
-            "Dining",
-            "Kitchen",
-          ].map((cat) => (
+          {categories.map((cat) => (
             <span
               key={cat}
               onClick={() => setCategory(cat)}
@@ -105,9 +109,9 @@ const ProductFilter = ({
       <div className="filter-company">
         <p className="filter-title">Company</p>
         <select value={company} onChange={(e) => setCompany(e.target.value)}>
-          {["All", "Ikea", "Liddy", "Marcos", "Caressa"].map((c) => (
+          {companies.map((c) => (
             <option key={c} value={c}>
-              {c}
+              {c.charAt(0).toUpperCase() + c.slice(1)}
             </option>
           ))}
         </select>
@@ -116,7 +120,7 @@ const ProductFilter = ({
       <div className="filter-color">
         <p className="filter-title">Color</p>
         <div className="color-options">
-          {["All", "#000", "#00f", "#0f0", "#ff0", "#f00", "#f7c"].map((c) => (
+          {colors.map((c) => (
             <span
               key={c}
               onClick={() => setColor(c)}
@@ -134,12 +138,18 @@ const ProductFilter = ({
 
       <div className="filter-price">
         <p className="filter-title">Price</p>
-        <p className="price-value">${price.toFixed(2)}</p>
+        <p className="price-value">
+          $
+          {price.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        </p>
         <input
           type="range"
           min={0}
-          max={3099.99}
-          step={0.01}
+          max={maxPrice}
+          step={1}
           value={price}
           onChange={(e) => setPrice(Number(e.target.value))}
         />
