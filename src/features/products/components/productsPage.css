@@ -3,28 +3,60 @@
   background-color: #f9f9f9;
   min-height: 100vh;
   display: flex;
+  gap: 2rem;
+}
+
+.products-filter {
+  flex: 1;
+  max-width: 250px;
+}
+
+.products-container {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.products-all {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
-.products-header {
-  margin-bottom: 1rem;
+.products-all p {
+  color: #333;
+  font-weight: 500;
 }
 
-.products-header h3 {
-  font-size: 1.2rem;
-  color: #444;
-}
-
-/* .underline {
-  width: 100%;
+.single-line {
+  flex-grow: 1;
   height: 2px;
   background-color: #c084fc;
-  margin-top: 0.25rem;
-} */
+  margin: 0 1rem;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-container label {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.sort-container select {
+  border: 1px solid #c084fc;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  outline: none;
+}
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-  width: 100%;
+  grid-template-columns: repeat(3, 1fr); /* Uvek 3 proizvoda po redu */
+  gap: 1.5rem;
 }

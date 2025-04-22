@@ -9,6 +9,7 @@ import HomePage from "./features/home/pages/HomePage";
 import ProductsPage from "./features/products/components/ProductsPage";
 import SharedLayout from "./layout/components/SharedLayout";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import ProductDetails from "./features/products/components/productDetails";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
         <Route path="products" element={<ProductsPage />} />
+        <Route path="productDetails" element={<ProductDetails />} />
       </Route>
     </Routes>
   );
