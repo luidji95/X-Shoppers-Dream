@@ -3,6 +3,7 @@ import "./Operations.css";
 export type Props = {
   title: string;
   text: string;
+  img: string;
 };
 
 const TabContent = ({ title, text, img }: Props) => {

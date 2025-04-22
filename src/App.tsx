@@ -17,7 +17,7 @@ function App() {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
         <Route path="products" element={<ProductsPage />} />
-        <Route path="productDetails" element={<ProductDetails />} />
+        <Route path="product/:id" element={<ProductDetails />} />
       </Route>
     </Routes>
   );

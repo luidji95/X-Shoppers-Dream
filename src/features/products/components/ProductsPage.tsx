@@ -1,3 +1,4 @@
+// ✅ ProductsPage.tsx
 import { useQuery } from "@tanstack/react-query";
 import { fetchAllProducts } from "../api/productsServices";
 import Product from "./Product";
@@ -6,6 +7,9 @@ import Loading from "../../../components/ui/Loading";
 import ProductFilter from "./ProductFilters";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setProducts } from "../../../redux/slices/productsSlice";
+import type { Product as ProductType } from "../types";
 
 const ProductsPage = () => {
   const {
@@ -19,27 +23,25 @@ const ProductsPage = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
   const [sortOrder, setSortOrder] = useState("lowest");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (products) {
       setFilteredProducts(products);
+      dispatch(setProducts(products));
     }
-  }, [products]);
+  }, [products, dispatch]);
 
-  const handleSortChange = (e) => {
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const order = e.target.value;
     setSortOrder(order);
     const sorted = [...filteredProducts].sort((a, b) =>
       order === "lowest" ? a.price - b.price : b.price - a.price
     );
     setFilteredProducts(sorted);
-  };
-
-  const handleProductDetails = () => {
-    navigate("/productDetails");
   };
 
   if (isLoading) return <Loading />;
@@ -68,10 +70,15 @@ const ProductsPage = () => {
           </div>
         </div>
 
-        <div className="products-grid" onClick={handleProductDetails}>
+        <div className="products-grid">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((item) => (
-              <Product key={item.id} product={item} variant="list" />
+              <Product
+                key={item.id}
+                product={item}
+                variant="list"
+                onClick={() => navigate(`/product/${item.id}`)}
+              />
             ))
           ) : (
             <p>No products match your filters.</p>

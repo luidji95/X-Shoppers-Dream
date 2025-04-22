@@ -1,7 +1,13 @@
 import Button from "../../../components/ui/Button";
 import "./herosection.css";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const handleNavigateToProducts = () => {
+    navigate("/products");
+  };
   return (
     <>
       <section className="hero-section">
@@ -13,7 +19,9 @@ const HomePage = () => {
             <p className="parag">Create your perfect space with our desingn.</p>
           </div>
           <div className="hero-buttons">
-            <Button variant="primary">Explore products</Button>
+            <Button variant="primary" onClick={handleNavigateToProducts}>
+              Explore products
+            </Button>
             <Button variant="secondary">Learn more</Button>
           </div>
         </div>

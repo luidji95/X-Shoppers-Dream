@@ -1,17 +1,19 @@
-// import type { Product } from "../types";
+// ✅ Product.tsx
 import Button from "../../../components/ui/Button";
 import "./Products.css";
+import type { Product } from "../types";
 
 type ProductProps = {
   product: Product;
   variant?: "featured" | "list";
+  onClick: () => void;
 };
 
-const Product = ({ product, variant = "featured" }: ProductProps) => {
+const Product = ({ product, variant = "featured", onClick }: ProductProps) => {
   const { image, name, price, description } = product;
 
   return (
-    <div className={`product-main-card ${variant}`}>
+    <div className={`product-main-card ${variant}`} onClick={onClick}>
       <img src={image} alt={name} />
 
       <div className="product-name-price">
@@ -23,7 +25,6 @@ const Product = ({ product, variant = "featured" }: ProductProps) => {
         </div>
       </div>
 
-      {/* MOBILE ONLY */}
       <div className="mobile-only">
         <p className="p-details">{description}</p>
         <Button variant="primary">Details</Button>
