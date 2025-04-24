@@ -1,4 +1,3 @@
-// ✅ ProductsPage.tsx
 import { useQuery } from "@tanstack/react-query";
 import { fetchAllProducts } from "../api/productsServices";
 import Product from "./Product";

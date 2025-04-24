@@ -1,4 +1,3 @@
-// ✅ Product.tsx
 import Button from "../../../components/ui/Button";
 import "./Products.css";
 import type { Product } from "../types";
