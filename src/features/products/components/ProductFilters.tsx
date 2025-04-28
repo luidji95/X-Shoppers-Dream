@@ -12,15 +12,16 @@ const ProductFilter = ({
   products,
   setFilteredProducts,
 }: ProductFilterProps) => {
-  const [searchInput, setSearchInput] = useState("");
-  const [category, setCategory] = useState("All");
-  const [company, setCompany] = useState("All");
-  const [color, setColor] = useState("All");
-  const [price, setPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
-  const [freeShipping, setFreeShipping] = useState(false);
+  const [filters, setFilters] = useState({
+    searchInput: "",
+    category: "All",
+    company: "All",
+    color: "All",
+    price: 0,
+    maxPrice: 0,
+    freeShipping: false,
+  });
 
-  // Dinamički izvlačimo kategorije, kompanije i boje
   const categories = ["All", ...new Set(products.map((p) => p.category))];
   const companies = ["All", ...new Set(products.map((p) => p.company))];
   const colors = ["All", ...new Set(products.flatMap((p) => p.colors))];
@@ -28,48 +29,49 @@ const ProductFilter = ({
   useEffect(() => {
     if (products.length) {
       const maxProductPrice = Math.max(...products.map((p) => p.price));
-      setPrice(maxProductPrice);
-      setMaxPrice(maxProductPrice);
+      setFilters((prev) => ({
+        ...prev,
+        price: maxProductPrice,
+        maxPrice: maxProductPrice,
+      }));
     }
   }, [products]);
 
-  const handleClearFilters = () => {
-    setSearchInput("");
-    setCategory("All");
-    setCompany("All");
-    setColor("All");
-    setPrice(maxPrice);
-    setFreeShipping(false);
+  const updateFilters = (name: string, value: string | number | boolean) => {
+    setFilters((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleFilterChange = () => {
     let filtered = [...products];
 
-    if (searchInput) {
+    if (filters.searchInput) {
       filtered = filtered.filter((p) =>
-        p.name.toLowerCase().includes(searchInput.toLowerCase())
+        p.name.toLowerCase().includes(filters.searchInput.toLowerCase())
       );
     }
 
-    if (category !== "All") {
+    if (filters.category !== "All") {
       filtered = filtered.filter(
-        (p) => p.category.toLowerCase() === category.toLowerCase()
+        (p) => p.category.toLowerCase() === filters.category.toLowerCase()
       );
     }
 
-    if (company !== "All") {
+    if (filters.company !== "All") {
       filtered = filtered.filter(
-        (p) => p.company.toLowerCase() === company.toLowerCase()
+        (p) => p.company.toLowerCase() === filters.company.toLowerCase()
       );
     }
 
-    if (color !== "All") {
-      filtered = filtered.filter((p) => p.colors.includes(color));
+    if (filters.color !== "All") {
+      filtered = filtered.filter((p) => p.colors.includes(filters.color));
     }
 
-    filtered = filtered.filter((p) => p.price <= price);
+    filtered = filtered.filter((p) => p.price <= filters.price);
 
-    if (freeShipping) {
+    if (filters.freeShipping) {
       filtered = filtered.filter((p) => p.shipping === true);
     }
 
@@ -78,7 +80,7 @@ const ProductFilter = ({
 
   useEffect(() => {
     handleFilterChange();
-  }, [searchInput, category, company, color, price, freeShipping, products]);
+  }, [filters, products]);
 
   return (
     <div className="product-filter-main">
@@ -86,8 +88,8 @@ const ProductFilter = ({
         <input
           type="text"
           placeholder="Search"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
+          value={filters.searchInput}
+          onChange={(e) => updateFilters("searchInput", e.target.value)}
         />
       </div>
 
@@ -97,8 +99,8 @@ const ProductFilter = ({
           {categories.map((cat) => (
             <span
               key={cat}
-              onClick={() => setCategory(cat)}
-              className={category === cat ? "active" : ""}
+              onClick={() => updateFilters("category", cat)}
+              className={filters.category === cat ? "active" : ""}
             >
               {cat}
             </span>
@@ -108,7 +110,10 @@ const ProductFilter = ({
 
       <div className="filter-company">
         <p className="filter-title">Company</p>
-        <select value={company} onChange={(e) => setCompany(e.target.value)}>
+        <select
+          value={filters.company}
+          onChange={(e) => updateFilters("company", e.target.value)}
+        >
           {companies.map((c) => (
             <option key={c} value={c}>
               {c.charAt(0).toUpperCase() + c.slice(1)}
@@ -123,8 +128,8 @@ const ProductFilter = ({
           {colors.map((c) => (
             <span
               key={c}
-              onClick={() => setColor(c)}
-              className={`color-circle ${color === c ? "active" : ""}`}
+              onClick={() => updateFilters("color", c)}
+              className={`color-circle ${filters.color === c ? "active" : ""}`}
               style={{
                 backgroundColor: c !== "All" ? c : "transparent",
                 border: c === "All" ? "1px solid black" : "none",
@@ -140,7 +145,7 @@ const ProductFilter = ({
         <p className="filter-title">Price</p>
         <p className="price-value">
           $
-          {price.toLocaleString("en-US", {
+          {filters.price.toLocaleString("en-US", {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
           })}
@@ -148,26 +153,41 @@ const ProductFilter = ({
         <input
           type="range"
           min={0}
-          max={maxPrice}
+          max={filters.maxPrice}
           step={1}
-          value={price}
-          onChange={(e) => setPrice(Number(e.target.value))}
+          value={filters.price}
+          onChange={(e) => updateFilters("price", Number(e.target.value))}
         />
       </div>
 
       <div className="filter-shipping">
         <label>
-          Free shipping{" "}
+          Free shipping
           <input
             type="checkbox"
-            checked={freeShipping}
-            onChange={() => setFreeShipping(!freeShipping)}
+            checked={filters.freeShipping}
+            onChange={() =>
+              updateFilters("freeShipping", !filters.freeShipping)
+            }
           />
         </label>
       </div>
 
       <div className="reset-filters">
-        <Button variant="danger" onClick={handleClearFilters}>
+        <Button
+          variant="danger"
+          onClick={() =>
+            setFilters((prev) => ({
+              ...prev,
+              searchInput: "",
+              category: "All",
+              company: "All",
+              color: "All",
+              price: filters.maxPrice,
+              freeShipping: false,
+            }))
+          }
+        >
           Clear filters
         </Button>
       </div>
