@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import "./productsFilter.css";
 import Button from "../../../components/ui/Button";
 import type { Product } from "../types";
+import CategoryFilters from "./ProductFiltersParts.tsx/CategoryFilters";
+import CompanyFilter from "./ProductFiltersParts.tsx/CompanyFilters";
+import ColorFilter from "./ProductFiltersParts.tsx/ColorFilters";
 
 type ProductFilterProps = {
   products: Product[];
@@ -93,7 +96,25 @@ const ProductFilter = ({
         />
       </div>
 
-      <div className="filter-category">
+      <CategoryFilters
+        selectedCategory={filters.category}
+        categories={categories}
+        updateFilters={updateFilters}
+      />
+
+      <CompanyFilter
+        selectedCompany={filters.company}
+        companies={companies}
+        updateFilters={updateFilters}
+      />
+
+      <ColorFilter
+        selectedColor={filters.color}
+        colors={colors}
+        updateFilters={updateFilters}
+      />
+
+      {/* <div className="filter-category">
         <p className="filter-title">Category</p>
         <div className="category-items">
           {categories.map((cat) => (
@@ -106,9 +127,9 @@ const ProductFilter = ({
             </span>
           ))}
         </div>
-      </div>
+      </div> */}
 
-      <div className="filter-company">
+      {/* <div className="filter-company">
         <p className="filter-title">Company</p>
         <select
           value={filters.company}
@@ -139,7 +160,7 @@ const ProductFilter = ({
             </span>
           ))}
         </div>
-      </div>
+      </div> */}
 
       <div className="filter-price">
         <p className="filter-title">Price</p>
