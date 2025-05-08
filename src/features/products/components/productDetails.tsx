@@ -4,6 +4,7 @@ import { fetchSingleProductDetails } from "../api/productsServices";
 import type { Product } from "../types";
 import Button from "../../../components/ui/Button";
 import "./productDetails.css";
+import { useState, useEffect } from "react";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -19,6 +20,14 @@ const ProductDetails = () => {
     queryFn: () => fetchSingleProductDetails(id!),
     staleTime: 1000 * 60 * 5,
   });
+
+  const [mainImage, setMainImage] = useState<string | undefined>("");
+
+  useEffect(() => {
+    if (product && product.images.length > 0) {
+      setMainImage(product.images[0].url);
+    }
+  }, [product]);
 
   if (isLoading) return <p>Loading product details...</p>;
   if (isError) return <p>Error: {(error as Error).message}</p>;
@@ -44,22 +53,21 @@ const ProductDetails = () => {
       </Button>
 
       <div className="product-details-grid">
-        {/* Left: Images */}
         <div className="product-images">
-          <img className="main-image" src={images[0]?.url} alt={name} />
+          <img className="main-image" src={mainImage} alt={name} />
           <div className="thumbnail-row">
             {images.map((img) => (
               <img
                 key={img.id}
                 src={img.url}
                 alt={name}
-                className="thumbnail"
+                className={`thumbnail ${mainImage === img.url ? "active" : ""}`}
+                onClick={() => setMainImage(img.url)}
               />
             ))}
           </div>
         </div>
 
-        {/* Right: Product Info */}
         <div className="product-info">
           <h1>{name}</h1>
           <p className="stars">

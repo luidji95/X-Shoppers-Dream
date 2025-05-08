@@ -69,6 +69,6 @@ export const fetchSingleProductDetails = async (
     return product;
   } catch (error) {
     console.error("Error fetching single product details:", error);
-    throw error; // bacimo grešku da je React Query ili drugi handler uhvati
+    throw error;
   }
 };

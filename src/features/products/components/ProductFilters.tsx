@@ -114,54 +114,6 @@ const ProductFilter = ({
         updateFilters={updateFilters}
       />
 
-      {/* <div className="filter-category">
-        <p className="filter-title">Category</p>
-        <div className="category-items">
-          {categories.map((cat) => (
-            <span
-              key={cat}
-              onClick={() => updateFilters("category", cat)}
-              className={filters.category === cat ? "active" : ""}
-            >
-              {cat}
-            </span>
-          ))}
-        </div>
-      </div> */}
-
-      {/* <div className="filter-company">
-        <p className="filter-title">Company</p>
-        <select
-          value={filters.company}
-          onChange={(e) => updateFilters("company", e.target.value)}
-        >
-          {companies.map((c) => (
-            <option key={c} value={c}>
-              {c.charAt(0).toUpperCase() + c.slice(1)}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="filter-color">
-        <p className="filter-title">Color</p>
-        <div className="color-options">
-          {colors.map((c) => (
-            <span
-              key={c}
-              onClick={() => updateFilters("color", c)}
-              className={`color-circle ${filters.color === c ? "active" : ""}`}
-              style={{
-                backgroundColor: c !== "All" ? c : "transparent",
-                border: c === "All" ? "1px solid black" : "none",
-              }}
-            >
-              {c === "All" ? "All" : ""}
-            </span>
-          ))}
-        </div>
-      </div> */}
-
       <div className="filter-price">
         <p className="filter-title">Price</p>
         <p className="price-value">
