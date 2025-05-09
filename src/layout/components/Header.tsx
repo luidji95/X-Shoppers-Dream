@@ -2,8 +2,13 @@ import Hamburger from "hamburger-react";
 import { useState } from "react";
 import "./header.css";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import type { RootState } from "@reduxjs/toolkit/query";
 
 const Header = () => {
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -46,7 +51,7 @@ const Header = () => {
           <Hamburger toggled={isOpen} toggle={setIsOpen} />
         </div>
 
-        <div className="cart">
+        <div className="cart" onClick={() => navigate("/cart")}>
           <p>Cart</p>
           <svg
             className="svg-img"
@@ -62,7 +67,7 @@ const Header = () => {
               d="M16.5 9V6a4.5 4.5 0 00-9 0v3m-4.5 0h18l-1.5 11.25a2.25 2.25 0 01-2.25 2H6.75a2.25 2.25 0 01-2.25-2L3 9z"
             />
           </svg>
-          <div className="number-cart">0</div>
+          <div className="number-cart">{totalItems}</div>
         </div>
       </div>
 

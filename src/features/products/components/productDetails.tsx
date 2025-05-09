@@ -5,10 +5,15 @@ import type { Product } from "../types";
 import Button from "../../../components/ui/Button";
 import "./productDetails.css";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../redux/slices/cartSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
+  const [mainImage, setMainImage] = useState<string | undefined>("");
 
   const {
     data: product,
@@ -20,8 +25,6 @@ const ProductDetails = () => {
     queryFn: () => fetchSingleProductDetails(id!),
     staleTime: 1000 * 60 * 5,
   });
-
-  const [mainImage, setMainImage] = useState<string | undefined>("");
 
   useEffect(() => {
     if (product && product.images.length > 0) {
@@ -46,6 +49,12 @@ const ProductDetails = () => {
     id: sku,
   } = product;
 
+  const handleAddToCart = () => {
+    if (stock > 0) {
+      dispatch(addToCart({ ...product, quantity }));
+    }
+  };
+
   return (
     <div className="product-details-section">
       <Button onClick={() => navigate(-1)} className="back-btn">
@@ -54,7 +63,12 @@ const ProductDetails = () => {
 
       <div className="product-details-grid">
         <div className="product-images">
-          <img className="main-image" src={mainImage} alt={name} />
+          <img
+            className="main-image"
+            src={mainImage}
+            alt={name}
+            style={{ width: "500px", height: "500px", objectFit: "cover" }}
+          />
           <div className="thumbnail-row">
             {images.map((img) => (
               <img
@@ -107,11 +121,22 @@ const ProductDetails = () => {
 
           <div className="add-to-cart">
             <div className="quantity-controls">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
+              <button
+                onClick={() => setQuantity((prev) => Math.max(prev - 1, 1))}
+              >
+                -
+              </button>
+              <span>{quantity}</span>
+              <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
             </div>
-            <Button variant="primary">Add to Cart</Button>
+
+            <Button
+              variant="primary"
+              onClick={handleAddToCart}
+              disabled={stock === 0}
+            >
+              Add to Cart
+            </Button>
           </div>
         </div>
       </div>
