@@ -51,7 +51,7 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     if (stock > 0) {
-      dispatch(addToCart({ ...product, quantity }));
+      dispatch(addToCart({ product, quantity }));
     }
   };
 
