@@ -1,3 +1,5 @@
+import { capitalizeWords } from "../Product";
+
 type CategoryFilterProps = {
   selectedCategory: string;
   categories: string[];
@@ -19,7 +21,7 @@ const CategoryFilter = ({
             onClick={() => updateFilters("category", cat)}
             className={selectedCategory === cat ? "active" : ""}
           >
-            {cat}
+            {capitalizeWords(cat)}
           </span>
         ))}
       </div>

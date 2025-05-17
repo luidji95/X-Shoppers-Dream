@@ -8,6 +8,13 @@ type ProductProps = {
   onClick: () => void;
 };
 
+export const capitalizeWords = (str: string) => {
+  return str
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
 const Product = ({ product, variant = "featured", onClick }: ProductProps) => {
   const { image, name, price, description } = product;
 
@@ -17,7 +24,7 @@ const Product = ({ product, variant = "featured", onClick }: ProductProps) => {
 
       <div className="product-name-price">
         <div className="product-name">
-          <h3>{name}</h3>
+          <h3>{capitalizeWords(name)}</h3>
         </div>
         <div className="product-price">
           <h3 className="price">${price.toLocaleString()}</h3>

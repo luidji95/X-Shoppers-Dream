@@ -6,7 +6,7 @@ type ButtonProps = {
   onClick?: () => void; // Klik handler, opcioni
   type?: "button" | "submit"; // Za forme
   variant?: "primary" | "secondary" | "tab" | "danger"; // Stilizacija
-  className?: string; // Dodatna klasa ako ti treba
+  className?: string; // Dodatna klasa 
   disabled?: boolean; // Da li je dugme onemogućeno
 };
 

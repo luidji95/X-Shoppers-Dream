@@ -7,7 +7,7 @@ import "./productDetails.css";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/slices/cartSlice";
-
+import { capitalizeWords } from "./Product";
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -83,7 +83,7 @@ const ProductDetails = () => {
         </div>
 
         <div className="product-info">
-          <h1>{name}</h1>
+          <h1>{capitalizeWords(name)}</h1>
           <p className="stars">
             {"★".repeat(Math.round(stars))} ({reviews} customer reviews)
           </p>

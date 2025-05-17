@@ -57,6 +57,6 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Uvek 3 proizvoda po redu */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 1.5rem;
 }

@@ -210,13 +210,4 @@
 .borderbottom {
   border-top: 1px solid rgb(223, 210, 210);
 }
-.slide-init {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
 
-.slide-in {
-  opacity: 1;
-  transform: translateX(0);
-}
