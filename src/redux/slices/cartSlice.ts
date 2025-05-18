@@ -1,7 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { Product } from "../../features/products/types";
 
-type CartItem = Product & { quantity: number };
+type CartItem = Product & {
+  quantity: number;
+  selectedColor: string;
+};
 
 type CartState = {
   cartItems: CartItem[];
@@ -17,9 +20,13 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (
       state,
-      action: PayloadAction<{ product: Product; quantity: number }>
+      action: PayloadAction<{
+        product: Product;
+        quantity: number;
+        selectedColor: string;
+      }>
     ) => {
-      const { product, quantity } = action.payload;
+      const { product, quantity, selectedColor } = action.payload;
       const existingItem = state.cartItems.find(
         (item) => item.id === product.id
       );
@@ -27,29 +34,58 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity += quantity;
       } else {
-        state.cartItems.push({ ...product, quantity });
+        state.cartItems.push({
+          ...product,
+          quantity,
+          selectedColor,
+          image: product.image,
+        });
       }
     },
 
-    removeFromCart: (state, action: PayloadAction<string>) => {
+    removeFromCart: (
+      state,
+      action: PayloadAction<{ id: string; selectedColor: string }>
+    ) => {
       state.cartItems = state.cartItems.filter(
-        (item) => item.id !== action.payload
+        (item) =>
+          item.id !== action.payload.id ||
+          item.selectedColor !== action.payload.selectedColor
       );
     },
-    increaseQuantity: (state, action: PayloadAction<string>) => {
-      const item = state.cartItems.find((i) => i.id === action.payload);
+
+    increaseQuantity: (
+      state,
+      action: PayloadAction<{ id: string; selectedColor: string }>
+    ) => {
+      const item = state.cartItems.find(
+        (i) =>
+          i.id === action.payload.id &&
+          i.selectedColor === action.payload.selectedColor
+      );
       if (item) item.quantity += 1;
     },
-    decreaseQuantity: (state, action: PayloadAction<string>) => {
-      const item = state.cartItems.find((i) => i.id === action.payload);
+
+    decreaseQuantity: (
+      state,
+      action: PayloadAction<{ id: string; selectedColor: string }>
+    ) => {
+      const item = state.cartItems.find(
+        (i) =>
+          i.id === action.payload.id &&
+          i.selectedColor === action.payload.selectedColor
+      );
       if (item && item.quantity > 1) {
         item.quantity -= 1;
       } else {
         state.cartItems = state.cartItems.filter(
-          (i) => i.id !== action.payload
+          (i) =>
+            i.id !== action.payload.id ||
+            i.selectedColor !== action.payload.selectedColor
         );
       }
     },
+
     clearCart: (state) => {
       state.cartItems = [];
     },

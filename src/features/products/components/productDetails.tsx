@@ -14,6 +14,7 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
   const [mainImage, setMainImage] = useState<string | undefined>("");
+  const [selectedColor, setSelectedColor] = useState<string>("");
 
   const {
     data: product,
@@ -27,7 +28,8 @@ const ProductDetails = () => {
   });
 
   useEffect(() => {
-    if (product && product.images.length > 0) {
+    if (product && product.colors.length > 0) {
+      setSelectedColor(product.colors[0]);
       setMainImage(product.images[0].url);
     }
   }, [product]);
@@ -51,7 +53,14 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     if (stock > 0) {
-      dispatch(addToCart({ product, quantity }));
+      console.log("Adding to cart:", product.name, quantity, selectedColor);
+      dispatch(
+        addToCart({
+          product: { ...product, image: mainImage },
+          quantity,
+          selectedColor,
+        })
+      );
     }
   };
 
@@ -106,15 +115,19 @@ const ProductDetails = () => {
             {colors.map((c) => (
               <span
                 key={c}
+                onClick={() => setSelectedColor(c)}
                 style={{
                   backgroundColor: c,
                   display: "inline-block",
-                  width: "20px",
-                  height: "20px",
+                  width: "25px",
+                  height: "25px",
                   borderRadius: "50%",
                   margin: "0 5px",
-                  border: "1px solid #ccc",
+                  border:
+                    selectedColor === c ? "2px solid black" : "1px solid #ccc",
+                  cursor: "pointer",
                 }}
+                title={c}
               ></span>
             ))}
           </div>

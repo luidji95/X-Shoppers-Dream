@@ -3,10 +3,12 @@ import type { RootState } from "../../redux/store";
 import { removeFromCart } from "../../redux/slices/cartSlice";
 import Button from "../../components/ui/Button";
 import "./cart.css";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const dispatch = useDispatch();
+  const navitage = useNavigate();
 
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -17,7 +19,9 @@ const Cart = () => {
     <div className="cart-container">
       <h2>Your Cart</h2>
 
-      <a>Back to Products</a>
+      <a className="back-to-products" onClick={() => navitage("/products")}>
+        Back to Products
+      </a>
 
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
@@ -30,9 +34,33 @@ const Cart = () => {
                 <h4>{item.name}</h4>
                 <p>Price: ${(item.price / 100).toFixed(2)}</p>
                 <p>Qty: {item.quantity}</p>
+                <p>
+                  Color:{" "}
+                  <span
+                    style={{
+                      display: "inline-block",
+                      width: "20px",
+                      height: "20px",
+                      backgroundColor: item.selectedColor,
+                      borderRadius: "50%",
+                      border: "1px solid #000",
+                      verticalAlign: "middle",
+                      marginLeft: "5px",
+                    }}
+                    title={item.selectedColor}
+                  ></span>
+                </p>
+
                 <Button
                   variant="danger"
-                  onClick={() => dispatch(removeFromCart(item.id))}
+                  onClick={() =>
+                    dispatch(
+                      removeFromCart({
+                        id: item.id,
+                        selectedColor: item.selectedColor,
+                      })
+                    )
+                  }
                 >
                   Remove
                 </Button>
