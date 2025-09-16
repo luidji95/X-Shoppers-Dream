@@ -79,43 +79,7 @@
   background-color: #a855f7;
   color: white;
 }
-@media (max-width: 1280px) {
-  .product-main-card {
-    max-width: 270px;
-  }
-  /* .creeds-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 40%;
-  } */
-  .creeds-content-same p {
-    max-width: 300px;
-    font-size: 1rem;
-  }
-  /* .creeds-title {
-    display: flex;
-    justify-content: center;
-  }
-  .creeds-p {
-    display: flex;
-    justify-content: center;
-  } */
-}
-@media (max-width: 1070px) {
-  .creeds-content-same p {
-    max-width: 400px;
-    font-size: 1.5rem;
-  }
-  .creeds-content {
-    display: flex;
-    flex-direction: column;
 
-    justify-content: start;
-    margin-left: 40%;
-  }
-}
 .slide-init {
   opacity: 0;
   transform: translateX(-50px);
@@ -125,4 +89,122 @@
 .slide-in {
   opacity: 1;
   transform: translateX(0);
+}
+/* ===== BrandEssence – responsive ONLY (desktop ostaje isti) ===== */
+
+/* <= 1280px: malo uži container + sitniji lead */
+@media (max-width: 1280px) {
+  .creeds-section {
+    padding: 0 16%;
+  }
+  .creeds-p {
+    font-size: 1.8rem;
+  }
+}
+
+/* <= 1024px: centriraj tekst, rastereti grid i smanji kartice */
+@media (max-width: 1024px) {
+  .creeds-section {
+    padding: 0 12%;
+  }
+  .creeds-title {
+    margin-top: 80px;
+  }
+  .creeds-p {
+    font-size: 1.6rem;
+    line-height: 1.45;
+    max-width: 680px;
+  }
+
+  .creeds-content {
+    justify-content: center; /* NE više space-between */
+    gap: 1.5rem;
+    margin-left: 0 !important; /* poništi raniji margin-left:40% */
+  }
+
+  /* elastične kartice – same širine, lepo prelome u 2-3 kolone */
+  .creeds-content-same {
+    flex: 1 1 300px; /* 300px baza, pa wrap */
+    max-width: 360px;
+    align-items: flex-start;
+  }
+
+  .creeds-content-same p {
+    font-size: 1rem; /* kompaktniji tekst u karticama */
+    line-height: 1.5;
+  }
+}
+
+/* <= 900px: 2 kolone komforno, manji krug i ikona */
+@media (max-width: 900px) {
+  .creeds-content {
+    gap: 1.25rem;
+  }
+  .creeds-content-same {
+    flex: 1 1 45%;
+    max-width: 420px;
+  }
+
+  .circle {
+    width: 52px;
+    height: 52px;
+  }
+  .creeds-icons-pic {
+    width: 32px;
+    height: 32px;
+    top: 10px;
+  }
+}
+
+/* <= 640px: 1 kolona, sve centrirano i još sitnije */
+@media (max-width: 640px) {
+  .creeds-section {
+    padding: 0 8%;
+  }
+  .creeds-title {
+    font-size: 1rem;
+    text-align: left;
+  }
+  .creeds-p {
+    font-size: 1.35rem;
+    line-height: 1.4;
+    max-width: 520px;
+  }
+
+  .creeds-content {
+    justify-content: center;
+  }
+  .creeds-content-same {
+    flex: 1 1 100%;
+    max-width: 520px;
+    gap: 16px;
+  }
+
+  .creeds-content-same p {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+}
+
+/* <= 420px: finalno sabijanje za male telefone */
+@media (max-width: 420px) {
+  .creeds-section {
+    padding: 0 6%;
+  }
+  .creeds-p {
+    font-size: 1.2rem;
+  }
+  .circle {
+    width: 46px;
+    height: 46px;
+  }
+  .creeds-icons-pic {
+    width: 26px;
+    height: 26px;
+    top: 10px;
+  }
+  .creeds-content-same p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 }

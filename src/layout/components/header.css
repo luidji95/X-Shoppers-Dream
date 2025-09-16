@@ -1,185 +1,228 @@
+/* ===== Header (mobile-first, accessible, responsive) ===== */
+
+/* Base layout */
 .header-main {
-  background-color: whitesmoke;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: whitesmoke;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 20%;
+  justify-content: space-between;
+  padding-inline: clamp(12px, 5vw, 20%);
+  padding-block: clamp(10px, 1.6vw, 16px);
 }
+
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
+  gap: 10px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  user-select: none;
 }
-.logo:hover {
-  cursor: pointer;
+.logo .svg-img {
+  width: 22px;
+  height: 22px;
 }
+
+/* Nav links (hidden on mobile by default) */
 .links {
-  display: flex;
-  gap: 35px;
-}
-.hamburger {
   display: none;
-}
-.cart {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-.cart:hover {
-  cursor: pointer;
-  transform: translateY(-2px);
-}
-.number-cart {
-  border-radius: 99999px;
-  background-color: #a855f7;
-  height: 20px;
-  width: 20px;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  right: -3px;
-  bottom: 10px;
+  gap: 28px;
 }
 .links p {
-  position: relative;
   margin: 0;
   font-weight: 500;
   color: #444;
-  transition: color 0.3s ease;
+  position: relative;
+  transition: color 0.25s ease;
 }
-.links:hover {
-  cursor: pointer;
-}
-
 .links p::after {
   content: "";
   position: absolute;
-  bottom: -5px;
   left: 0;
+  bottom: -6px;
   width: 0%;
   height: 2px;
-  background-color: #a855f7;
-
-  transition: width 0.3s ease;
+  background: #a855f7;
+  transition: width 0.25s ease;
 }
-
+.links p:hover {
+  color: #a855f7;
+}
 .links p:hover::after {
   width: 100%;
 }
 
-.links p:hover {
-  color: #ae68f0;
+/* Cart (icon + badge) */
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  transition: transform 0.2s ease;
 }
+.cart:hover {
+  transform: translateY(-1px);
+}
+.cart .svg-img {
+  width: 22px;
+  height: 22px;
+}
+.number-cart {
+  position: absolute;
+  right: -6px;
+  bottom: 8px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #a855f7;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Hamburger (visible on mobile) */
+.hamburger {
+  position: fixed;
+  top: 12px;
+  right: clamp(12px, 4vw, 24px);
+  z-index: 1100;
+  display: block;
+}
+
+/* Fullscreen mobile menu */
 .mobile-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background-color: rgba(250, 242, 242, 0.65);
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2.5rem;
+  gap: clamp(18px, 3.2vw, 28px);
   transform: translateX(100%);
-  transition: transform 0.4s ease-in-out;
-  z-index: 1000;
+  transition: transform 0.35s ease;
+  z-index: 1050;
+  padding: max(24px, env(safe-area-inset-top))
+    max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
 }
-
-/* Kada je otvoreno — dodaćeš ovu klasu u JSX */
 .mobile-menu.open {
   transform: translateX(0);
 }
 
 .item-hamburger {
-  font-size: 1.5rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: clamp(18px, 4.5vw, 28px);
+  font-weight: 700;
   cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 .item-hamburger a {
   color: #213547;
-  font-weight: 900;
+  text-decoration: none;
 }
-
 .item-hamburger:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
-.hamburger {
-  position: fixed;
-  top: 1.2rem;
-  right: 1.5rem;
-  z-index: 1100;
-}
-/* Kada je otvoreno — dodaćeš ovu klasu u JSX */
-.mobile-menu.open {
-  transform: translateX(0);
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  .links p::after,
+  .cart {
+    transition: none;
+  }
 }
 
-.item-hamburger {
-  font-size: 1.5rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: transform 0.3s ease, color 0.3s ease;
-  cursor: pointer;
-}
-.item-hamburger a {
-  color: #213547;
-  font-weight: 900;
-}
+/* ---------- Breakpoints ---------- */
 
-.item-hamburger:hover {
-  transform: scale(1.05);
-}
-
-.hamburger {
-  position: fixed;
-  top: 1.2rem;
-  right: 1.5rem;
-  z-index: 1100;
-}
-@media (max-width: 640px) {
-  .hamburger {
+/* ≥640px: show links, keep hamburger for tablets if you want both */
+@media (min-width: 640px) {
+  .links {
+    display: flex;
+  }
+  /* shrink header padding a bit on small tablets */
+  .header-main {
+    padding-inline: clamp(16px, 6vw, 14%);
+  }
+  /* show cart text until it gets too tight */
+  .cart p {
     display: block;
+    font-weight: 600;
+  }
+}
+
+/* ≥768px: typical tablet/landscape */
+@media (min-width: 768px) {
+  .header-main {
+    padding-inline: clamp(16px, 6vw, 12%);
+  }
+  .logo .svg-img,
+  .cart .svg-img {
+    width: 24px;
+    height: 24px;
+  }
+  /* keep hamburger visible if you like the overlay; otherwise hide it here */
+  .hamburger {
+    display: none;
+  }
+  .mobile-menu {
+    display: none;
+  }
+}
+
+/* ≥1024px: desktop */
+@media (min-width: 1024px) {
+  .header-main {
+    padding-inline: clamp(16px, 7vw, 18%);
   }
   .links {
+    gap: 35px;
+  }
+  .logo .svg-img,
+  .cart .svg-img {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* ≥1280px: extra breathing room */
+@media (min-width: 1280px) {
+  .header-main {
+    padding-inline: 20%;
+  }
+}
+
+/* <=520px: compress text labels, keep icons */
+@media (max-width: 520px) {
+  .cart p {
     display: none;
-  }
-  .cart {
+  } /* hide "Cart" label, keep icon */
+  .links {
     display: none;
+  } /* links hidden on small phones */
+}
+
+/* <=400px: very small phones */
+@media (max-width: 400px) {
+  .header-main {
+    padding-inline: 12px;
   }
-  .hero-section {
-    flex-direction: column;
-    align-items: center;
+  .logo p {
+    font-size: 0.95rem;
   }
-  .hero-h1 {
-    font-size: 2rem;
-  }
-  .parag {
-    font-size: 12px;
-  }
-  .btn-primary {
-    padding: 5px;
-    font-size: 0.9rem;
-  }
-  .btn-secondary {
-    padding: 5px;
-    font-size: 0.9rem;
-  }
-  .hero-right img {
-    width: 100%;
-    max-width: 350px;
-    border-radius: 10px;
+  .number-cart {
+    right: -4px;
+    bottom: 6px;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
   }
 }

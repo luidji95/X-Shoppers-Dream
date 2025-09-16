@@ -125,3 +125,14 @@
   opacity: 1;
   transform: translateX(0);
 }
+/* Stil za podnaslov ispod "Featured Products" – samo vizuelno manji */
+.featured-products-p {
+  font-size: 1.6rem; /* ranije 2rem – sada diskretnije */
+  line-height: 1.4; /* malo zbijenije za lepši izgled */
+  font-weight: 400; /* lakši font za elegantniji ton */
+}
+@media (max-width: 768px) {
+  .featured-products-p {
+    font-size: 1.4rem;
+  }
+}

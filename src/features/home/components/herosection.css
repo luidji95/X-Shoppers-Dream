@@ -89,84 +89,142 @@
   opacity: 1;
   transform: scale(1.05);
 }
+/* ===== Responsive add-ons (append-only) ===== */
 
+/* <= 1280px: malo smanji padding, zadrži flex raspored */
 @media (max-width: 1280px) {
-  .hero-h1 {
-    font-size: 45px;
+  .hero-section {
+    padding: 0 14%;
   }
-  .hero-right img {
-    width: 100%;
-    max-width: 450px;
-    border-radius: 10px;
-  }
-  .adds-img {
-    display: flex;
-    flex-direction: column;
+  .adds-section {
+    padding: 0 14%;
   }
 }
+
+/* <= 1024px: zadrži dva stuba, ali smanji razmake i sliku */
 @media (max-width: 1024px) {
   .hero-section {
-    justify-content: center;
     gap: 20px;
   }
   .hero-h1 {
     font-size: 35px;
   }
   .hero-right img {
-    width: 100%;
     max-width: 350px;
-    border-radius: 10px;
   }
-  .product-main-card {
-    max-width: 350px;
+  .adds-img {
+    justify-content: center;
+    gap: 1.25rem;
   }
 }
+
+/* <= 860px: i dalje flex-row, ali kompaktnije */
 @media (max-width: 860px) {
-  .hero-section {
-    justify-content: center;
-    gap: 20px;
-  }
   .hero-h1 {
-    font-size: 25px;
+    font-size: 28px;
+  }
+  .parag {
+    font-size: 0.95rem;
   }
   .hero-right img {
-    width: 100%;
-    max-width: 250px;
-    border-radius: 10px;
+    max-width: 280px;
   }
-  .btn-primary {
-    font-size: 0.8rem;
-  }
+  .btn-primary,
   .btn-secondary {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }
+
+/* <= 768px: prelazak u kolonu (bez menjanja osnovnog layout koda) */
 @media (max-width: 768px) {
   .hero-section {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center; /* centriraj levu i desnu */
+    text-align: center;
+    padding: 0 10%;
     gap: 20px;
+  }
+  .hero-left {
+    padding-left: 0;
+    align-items: center;
+  }
+  .hero-buttons {
+    justify-content: center;
+  }
+  .hero-right {
+    justify-content: center;
+    width: 100%;
+  }
+  .hero-right img {
+    max-width: 260px;
+  }
+  .hero-h1 {
+    font-size: 24px;
+  }
+  .parag {
+    font-size: 0.9rem;
+  }
+  .adds-section {
+    padding: 0 10%;
+  }
+  .adds-img {
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+/* <= 640px: dugmići u dva reda ako zatreba, smanji padding */
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 0 7%;
+  }
+  .hero-buttons {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+  }
+  .adds-section {
+    padding: 0 7%;
+  }
+}
+
+/* <= 520px: ukloni <br> u naslovu i proširi dugmiće */
+@media (max-width: 520px) {
+  .hero-section-text .hero-h1 br {
+    display: none;
+  }
+  .hero-buttons > * {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  .hero-right img {
+    max-width: 220px;
+  }
+  .adds-img img {
+    height: 1.6rem;
+  }
+}
+
+/* <= 400px: još zbijenije margine i tipografija */
+@media (max-width: 400px) {
+  .hero-section {
+    margin-top: 30px;
+    margin-bottom: 90px;
   }
   .hero-h1 {
     font-size: 20px;
   }
-  .hero-right img {
-    width: 100%;
-    max-width: 200px;
-    border-radius: 10px;
+  .parag {
+    font-size: 0.85rem;
   }
-  .hero-left {
-    width: 100%;
-    justify-content: center;
+  .adds-section {
+    margin-bottom: 90px;
   }
-  .hero-right {
-    width: 100%;
-    justify-content: start;
-    padding-left: 30px;
-  }
-  .btn-primary {
-    font-size: 0.4rem;
-  }
-  .btn-secondary {
-    font-size: 0.4rem;
+  .adds-img {
+    gap: 0.75rem;
   }
 }

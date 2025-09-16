@@ -2,7 +2,7 @@ import TabButton from "../../../TabContent/content";
 import { tabData } from "../../../data/tabData";
 import { useRef, useState } from "react";
 import TabContent from "./TabContent";
-import "./operations.css";
+import "./Operations.css";
 import Button from "../../../components/ui/Button";
 import { useIntersectionObserver } from "../../../useIntersectionObserver";
 const Operations = () => {
