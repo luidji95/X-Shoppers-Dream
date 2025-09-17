@@ -117,9 +117,6 @@
   font-size: 0.9rem;
 }
 
-/* ===== Testimonials — responsive only (desktop ostaje isti) ===== */
-
-/* <= 1200px: uže margine, wrapper centriran */
 @media (max-width: 1200px) {
   .testimonials-section {
     padding: 0 16%;
@@ -136,7 +133,6 @@
   }
 }
 
-/* <= 1024px: još malo kompaktnije */
 @media (max-width: 1024px) {
   .testimonials-section {
     padding: 0 12%;
@@ -151,7 +147,6 @@
   }
 }
 
-/* <= 768px: full width, sitnija tipografija i manji tasteri */
 @media (max-width: 768px) {
   .testimonials-section {
     padding: 0 8%;
@@ -198,7 +193,6 @@
   }
 }
 
-/* <= 560px: još kompaktnije, sadržaj staje u 4–6 urednih redova */
 @media (max-width: 560px) {
   .testimonial-slider-wrapper {
     max-width: 520px;
@@ -215,7 +209,6 @@
   }
 }
 
-/* <= 420px: phone layout */
 @media (max-width: 420px) {
   .testimonials-section {
     padding: 0 6%;
@@ -242,32 +235,13 @@
   }
 }
 
-/* === NOVE IZMJENE: strelice ispod naslova === */
 .testimonials-header {
-  position: relative; /* parent za apsolutno pozicioniranje */
+  position: relative;
 }
-
-.arrow-btn {
-  position: absolute;
-  top: 100%; /* tačno ispod headera */
-  transform: translateY(0);
-  z-index: 5;
-  margin-top: 0.75rem; /* razmak ispod naslova */
-}
-
-.arrow-btn.left {
-  left: 0;
-} /* levo uz ivicu headera */
-.arrow-btn.right {
-  right: 0;
-} /* desno uz ivicu headera */
 
 @media (max-width: 768px) {
   .arrow-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.25rem;
-    margin-top: 0.5rem;
+    display: none;
   }
 }
 
@@ -277,5 +251,26 @@
     height: 36px;
     font-size: 1.1rem;
     margin-top: 0.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-info {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+  }
+
+  .user-name,
+  .user-location {
+    white-space: nowrap;
+    font-size: 0.95rem;
+  }
+
+  .user-img {
+    width: 40px;
+    height: 40px;
   }
 }

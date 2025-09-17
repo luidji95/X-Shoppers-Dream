@@ -5,7 +5,7 @@ import type { Product } from "../types";
 type ProductProps = {
   product: Product;
   variant?: "featured" | "list";
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const capitalizeWords = (str: string) => {

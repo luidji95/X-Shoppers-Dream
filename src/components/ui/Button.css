@@ -70,3 +70,16 @@
   color: white;
   border-color: #f87171;
 }
+@media (max-width: 768px) {
+  .tab-btn {
+    font-size: 0.9rem !important;
+    padding: 0.6rem 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-btn {
+    font-size: 0.8rem !important;
+    padding: 0.5rem 0.9rem !important;
+  }
+}

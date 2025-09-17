@@ -2,12 +2,12 @@ import { ReactNode } from "react";
 import "./Button.css";
 
 type ButtonProps = {
-  children: ReactNode; // Sve što stavimo između <Button>ovde</Button>
-  onClick?: () => void; // Klik handler, opcioni
-  type?: "button" | "submit"; // Za forme
-  variant?: "primary" | "secondary" | "tab" | "danger"; // Stilizacija
-  className?: string; // Dodatna klasa 
-  disabled?: boolean; // Da li je dugme onemogućeno
+  children: ReactNode;
+  onClick?: () => void;
+  type?: "button" | "submit";
+  variant?: "primary" | "secondary" | "tab" | "danger";
+  className?: string;
+  disabled?: boolean;
 };
 
 const Button = ({
@@ -18,12 +18,23 @@ const Button = ({
   className = "",
   disabled = false,
 }: ButtonProps) => {
+  const baseClass =
+    variant === "tab"
+      ? "tab-btn"
+      : variant === "primary"
+      ? "btn primary"
+      : variant === "secondary"
+      ? "btn secondary"
+      : variant === "danger"
+      ? "btn danger"
+      : "btn";
+
   return (
     <button
       onClick={onClick}
       type={type}
       disabled={disabled}
-      className={`btn ${variant} ${className}`}
+      className={`${baseClass} ${className}`}
     >
       {children}
     </button>

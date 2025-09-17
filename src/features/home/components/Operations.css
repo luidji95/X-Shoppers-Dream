@@ -78,160 +78,117 @@
   line-height: 1.6;
 }
 
-/* ===== Operations — responsive only (desktop ostaje isti) ===== */
+/* === Responsive za Operations sekciju === */
 
-/* <= 1200px: malo uže margine */
-@media (max-width: 1200px) {
-  .operations-main {
-    padding: 0 16%;
-  }
-}
-
-/* <= 1024px: rastereti širine i tipografiju */
+/* Do 1024px: manja širina, malo kompaktnije */
 @media (max-width: 1024px) {
   .operations-main {
-    padding: 0 12%;
-    gap: 2.25rem;
+    padding: 0 10%;
   }
-  .operations-text {
-    margin-top: 80px;
-    text-align: center;
-  }
+
   .operations-text p {
-    font-size: 1.55rem;
-    line-height: 1.45;
-    max-width: 680px;
-    margin: 0 auto;
+    font-size: 1.75rem;
   }
 
   .tabContent-div {
-    width: 88%;
-    padding: 1.5rem;
-    gap: 0.9rem;
+    width: 90%;
+  }
+}
+
+/* Do 768px: stacked layout i centrirani sadržaj */
+@media (max-width: 768px) {
+  .operations-main {
+    padding: 0 6%;
+    gap: 2rem;
   }
 
-  /* ikonice mrvu manje da sve stane skladno */
+  .operations-text h2 {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .operations-text p {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .tabButton-div {
+    justify-content: center;
+  }
+
+  .tabContent-div {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .tabContent-div .tab-texts {
+    align-items: center;
+  }
+}
+
+/* Do 480px: najmanji layout */
+@media (max-width: 480px) {
+  .operations-text p {
+    font-size: 1.2rem;
+  }
+
+  .tabContent-div {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
   .tabContent-div .icon-circle {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     padding: 0.75rem;
   }
+
   .tab-icon {
     width: 22px;
     height: 22px;
   }
-}
 
-/* ===== Dugmići: uredan jedan red (scroll na uskom ekranu) ===== */
-@media (max-width: 900px) {
-  .tabButton-div {
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 0.75rem;
-    flex-wrap: nowrap; /* bez preloma u drugi red */
-    overflow-x: auto; /* skrol levo-desno kad ne staje */
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .tabButton-div::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* .btn.tab dolazi iz <Button variant="tab" /> */
-  .tabButton-div .btn.tab {
-    flex: 0 0 clamp(140px, 28vw, 180px); /* ujednačene širine */
-    text-align: center;
-    white-space: nowrap; /* bez lomljenja teksta */
-  }
-}
-
-/* <= 768px: 100% širina sadržaja + kompaktniji tekst */
-@media (max-width: 768px) {
-  .operations-main {
-    padding: 0 8%;
-  }
-  .operations-text p {
-    font-size: 1.35rem;
-    line-height: 1.4;
-    max-width: 540px;
-  }
-
-  .tabContent-div {
-    width: 100%;
-    padding: 1.25rem;
-    gap: 0.75rem;
-  }
-
-  /* Podržimo i .tab-text i .tab-texts (zavisno šta koristiš) */
-  .tab-text h3,
-  .tab-texts h3 {
+  .tabContent-div .tab-texts h3 {
     font-size: 1rem;
-    line-height: 1.3;
-    margin: 0 0 0.3rem 0;
   }
-  .tab-text p,
-  .tab-texts p {
-    font-size: 0.95rem;
-    line-height: 1.45;
-    max-width: 48ch; /* 4–6 urednih redova teksta */
-    text-align: justify;
-    margin: 0;
+
+  .tabContent-div .tab-texts p {
+    font-size: 0.9rem;
+  }
+}
+.tab-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .tab-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .tabContent-div .tab-texts {
+    align-items: center;
+  }
+}
+@media (max-width: 768px) {
+  .tabButton-div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-items: center;
   }
 }
 
-/* <= 600px: još kompaktnije, sitnije ikonice */
-@media (max-width: 600px) {
-  .operations-text p {
-    font-size: 1.25rem;
-    max-width: 480px;
-  }
-  .tabContent-div {
-    padding: 1.1rem;
-    gap: 0.7rem;
-  }
-  .tabContent-div .icon-circle {
-    width: 40px;
-    height: 40px;
-    padding: 0.65rem;
-  }
-  .tab-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .tab-text h3,
-  .tab-texts h3 {
-    font-size: 0.95rem;
-  }
-  .tab-text p,
-  .tab-texts p {
+@media (max-width: 768px) {
+  .tab-btn {
     font-size: 0.9rem;
-    line-height: 1.4;
-    max-width: 46ch;
-  }
-}
-
-/* <= 480px: finalno zbijanje za male telefone */
-@media (max-width: 480px) {
-  .operations-text p {
-    font-size: 1.15rem;
-    max-width: 420px;
-  }
-
-  .tabButton-div .btn.tab {
-    flex-basis: clamp(120px, 44vw, 150px);
-    font-size: 0.9rem;
-    padding: 0.5rem 0.9rem;
-  }
-
-  .tab-text h3,
-  .tab-texts h3 {
-    font-size: 0.9rem;
-  }
-  .tab-text p,
-  .tab-texts p {
-    font-size: 0.85rem;
-    max-width: 44ch;
-    line-height: 1.35;
+    padding: 0.6rem 1rem;
+    width: 100%;
   }
 }

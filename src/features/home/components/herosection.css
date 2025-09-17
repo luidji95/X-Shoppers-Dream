@@ -89,9 +89,7 @@
   opacity: 1;
   transform: scale(1.05);
 }
-/* ===== Responsive add-ons (append-only) ===== */
 
-/* <= 1280px: malo smanji padding, zadrži flex raspored */
 @media (max-width: 1280px) {
   .hero-section {
     padding: 0 14%;
@@ -101,7 +99,6 @@
   }
 }
 
-/* <= 1024px: zadrži dva stuba, ali smanji razmake i sliku */
 @media (max-width: 1024px) {
   .hero-section {
     gap: 20px;
@@ -118,7 +115,6 @@
   }
 }
 
-/* <= 860px: i dalje flex-row, ali kompaktnije */
 @media (max-width: 860px) {
   .hero-h1 {
     font-size: 28px;
@@ -135,11 +131,10 @@
   }
 }
 
-/* <= 768px: prelazak u kolonu (bez menjanja osnovnog layout koda) */
 @media (max-width: 768px) {
   .hero-section {
     flex-direction: column;
-    align-items: center; /* centriraj levu i desnu */
+    align-items: center;
     text-align: center;
     padding: 0 10%;
     gap: 20px;
@@ -173,7 +168,6 @@
   }
 }
 
-/* <= 640px: dugmići u dva reda ako zatreba, smanji padding */
 @media (max-width: 640px) {
   .hero-section {
     padding: 0 7%;
@@ -192,7 +186,6 @@
   }
 }
 
-/* <= 520px: ukloni <br> u naslovu i proširi dugmiće */
 @media (max-width: 520px) {
   .hero-section-text .hero-h1 br {
     display: none;
@@ -209,7 +202,6 @@
   }
 }
 
-/* <= 400px: još zbijenije margine i tipografija */
 @media (max-width: 400px) {
   .hero-section {
     margin-top: 30px;
