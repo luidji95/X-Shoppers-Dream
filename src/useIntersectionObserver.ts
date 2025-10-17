@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 
-export const useIntersectionObserver = (ref: React.RefObject<Element>) => {
+export const useIntersectionObserver = <T extends Element>(
+  ref: React.RefObject<T | null>
+) => {
   useEffect(() => {
-    if (!ref.current) {
+    const node = ref.current;
+    if (!node) {
       console.log("Ref je null u hook-u");
       return;
     }
 
-    console.log("Observer target:", ref.current);
+    console.log("Observer target:", node);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -21,12 +24,10 @@ export const useIntersectionObserver = (ref: React.RefObject<Element>) => {
       { threshold: 0.5 }
     );
 
-    observer.observe(ref.current);
+    observer.observe(node);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      observer.disconnect();
     };
-  }, [ref.current]);
+  }, [ref]);
 };
