@@ -44,7 +44,12 @@ const ProductsPage = () => {
   };
 
   if (isLoading) return <Loading />;
-  if (isError) return <p>Error: {error.message}</p>;
+  if (isError) {
+    const message =
+      (error as any)?.message ||
+      (typeof error === "string" ? error : "Something went wrong");
+    return <p>Error: {message}</p>;
+  }
   if (!products) return <p>No products found.</p>;
 
   return (

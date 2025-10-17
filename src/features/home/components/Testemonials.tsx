@@ -8,15 +8,22 @@ const Testimonials = () => {
   const [index, setIndex] = useState(0);
   const testimonialsRef = useRef<HTMLDivElement>(null);
 
+  const total = tabDataSlider.length;
+
   const handlePrev = () => {
-    setIndex((prev) => (prev === 0 ? tabDataSlider.length - 1 : prev - 1));
+    if (!total) return;
+    setIndex((prev) => (prev === 0 ? total - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setIndex((prev) => (prev === tabDataSlider.length - 1 ? 0 : prev + 1));
+    if (!total) return;
+    setIndex((prev) => (prev === total - 1 ? 0 : prev + 1));
   };
 
   useIntersectionObserver(testimonialsRef);
+
+  if (!total) return null;
+
   return (
     <section
       className="testimonials-section borderbottom slide-init"

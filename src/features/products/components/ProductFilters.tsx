@@ -1,20 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import "./productsFilter.css";
 import Button from "../../../components/ui/Button";
 import type { Product } from "../types";
 import CategoryFilters from "./ProductFiltersParts.tsx/CategoryFilters";
-import CompanyFilter from "./ProductFiltersParts.tsx/CompanyFilters";
 import ColorFilter from "./ProductFiltersParts.tsx/ColorFilters";
-
+import CompanyFilter from "./ProductFiltersParts.tsx/CompanyFilters";
 type ProductFilterProps = {
   products: Product[];
   setFilteredProducts: (products: Product[]) => void;
 };
 
-const ProductFilter = ({
-  products,
-  setFilteredProducts,
-}: ProductFilterProps) => {
+const ProductFilter = ({ products, setFilteredProducts }: ProductFilterProps) => {
   const [filters, setFilters] = useState({
     searchInput: "",
     category: "All",
@@ -25,9 +21,20 @@ const ProductFilter = ({
     freeShipping: false,
   });
 
-  const categories = ["All", ...new Set(products.map((p) => p.category))];
-  const companies = ["All", ...new Set(products.map((p) => p.company))];
-  const colors = ["All", ...new Set(products.flatMap((p) => p.colors))];
+  const categories = useMemo(
+    () => ["All", ...Array.from(new Set(products.map((p) => p.category)))],
+    [products]
+  );
+
+  const companies = useMemo(
+    () => ["All", ...Array.from(new Set(products.map((p) => p.company)))],
+    [products]
+  );
+
+  const colors = useMemo(
+    () => ["All", ...Array.from(new Set(products.flatMap((p) => p.colors || [])))],
+    [products]
+  );
 
   useEffect(() => {
     if (products.length) {
@@ -83,6 +90,7 @@ const ProductFilter = ({
 
   useEffect(() => {
     handleFilterChange();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, products]);
 
   return (
@@ -139,9 +147,7 @@ const ProductFilter = ({
           <input
             type="checkbox"
             checked={filters.freeShipping}
-            onChange={() =>
-              updateFilters("freeShipping", !filters.freeShipping)
-            }
+            onChange={() => updateFilters("freeShipping", !filters.freeShipping)}
           />
         </label>
       </div>

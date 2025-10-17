@@ -6,7 +6,7 @@ import "./featuredProducts.css";
 import Loading from "../../../components/ui/Loading";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../components/ui/Button";
-import { useEffect, useRef } from "react";
+import {  useRef } from "react";
 import { useIntersectionObserver } from "../../../useIntersectionObserver";
 
 const FeaturedProduct = () => {
